@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jumbo Bingo</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/assets/materialize/css/materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="/assets/jumbobingo.css" media="screen,projection" />
+
+    <style>
+        nav,
+        header,
+        main,
+        footer {
+            padding-left: 300px;
+        }
+
+        .col {
+            padding-left: -20px !important;
+        }
+
+        .no-id-bold {
+            font-weight: bold !important;
+            font-size: 1.5rem !important;
+        }
+
+        .no-margin {
+            margin-top: -30px !important;
+        }
+
+        .no-text-box {
+            width: 70% !important;
+            margin-left: 3px !important;
+            border-style: solid !important;
+            border-width: 1px !important;
+            line-height: 25px !important;
+            height: 25px !important;
+        }
+
+        .no-text-box-dd {
+            width: 70% !important;
+            margin-left: 3px !important;
+        }
+
+        .margin-dd {
+            padding-right: 100px !important;
+        }
+
+        .datepicker-date-display {
+            background-color: #000 !important;
+        }
+
+        .datepicker-table td.is-selected {
+            background-color: #000 !important;
+
+        }
+
+
+        .datepicker-cancel,
+        .datepicker-clear,
+        .datepicker-today,
+        .datepicker-done {
+            color: #0072bc;
+
+        }
+
+        #new_setup_table tbody tr {
+            height: 10px !important;
+            line-height: 10px !important;
+        }
+
+
+
+
+        #new_setup_table tbody td {
+            height: 10px !important;
+            line-height: 10px !important;
+        }
+
+        td {
+            padding: 0px 0px !important;
+        }
+
+
+        .game-play-div {
+            height: 100%;
+            /* border-style: solid;
+            border-width: 1px; */
+            margin-top: 20px;
+        }
+
+        .number-preview-display{
+            height: 450px;
+            width: 350px;
+            background-color: #ffeb3b;
+            color:red;
+            /* margin-left: 85px !important; */
+            /* margin-top: 20px !important; */
+        }
+
+        .number-preview-digit{
+            font-size: 30rem;
+            font-weight: bold;
+          
+        }
+
+        .all-numbers-display{
+            padding-top: 10px !important;
+            padding-left: 10px !important;
+        }
+
+        .all-number-initial-pointer{
+            color:#fff;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .round-btn-border{
+            border-style: solid !important;
+            border-width: 1px !important;
+            border-color: #000 !important;
+        }
+
+        .round-btn-numberings{
+            border-style: solid !important;
+            border-width: 1px !important;
+            border-color: #000 !important;
+            margin-bottom: 8px !important;
+            /* margin-right: 5px !important; */
+        }
+
+        #modal3 { 
+            height: 99%; 
+            max-height: 100%; 
+            /* overflow: visible; */
+          margin-top: -70px !important;
+        }
+
+        .card-panel{
+            height:375px !important;
+             
+        }
+
+        .row-bottom-border{
+            border-bottom-style: solid;
+            border-bottom-width: 1px;
+            border-bottom-color: #bdbdbd;
+        }
+
+        .td-width{
+            width: 25px !important;
+            height: 36px !important;
+            border-style: solid !important;
+            border-width: 1px !important;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .bottom-margin{
+            margin-bottom: -30px !important;
+             margin-top: -10px !important; 
+        }
+
+        #winner-list-table td{
+            height: 36px !important;
+            border-style: solid !important;
+            border-width: 1px !important;           
+            font-weight: bold;
+        }
+        #winner-list-table tr{
+            height: 36px !important;
+            border-style: solid !important;
+            border-width: 1px !important;           
+            font-weight: bold;
+        }
+
+        .winners-ticket-numbers-text{
+                font-weight: bold;
+                font-size:12px;
+             }
+ 
+
+        @media only screen and (max-width : 992px) {
+
+            header,
+            main,
+            footer {
+                padding-left: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="grey lighten-5">
+    <!-- Numbering prompt -->
+    <div id="modal1" class="modal" style="width: 70%;">
+        <div class="modal-content ">
+            <div class="row ">
+                <h5 class="left-align" style="margin-top: -10px !important;"><b>Numbering</b></h5>
+                <div class="divider"></div>
+            </div>
+
+            <div class="row grey lighten-4">
+                <div id="numberings"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="javascript:void(0);" class="waves-effect waves-green btn-small black">Save</a>
+            <a href="javascript:void(0);" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+    <!-- Game setup prompt -->
+    <div id="modal2" class="modal" style="width: 90%;">
+        <div class="modal-content " style="height: 500px;">
+            <div class="row">
+                <h5 class="left-align" style="margin-top: -10px !important;"><b>Game Setup</b></h5>
+                <div class="divider"></div>
+            </div>
+            <div class="row">
+                <p>
+                    <label>
+                        <input name="game_setup_selection" type="radio" class="select_setup_type" id="new_game_radio" />
+                        <span class="black-text">NEW SETUP</span>
+                    </label>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <label>
+                        <input name="game_setup_selection" type="radio" class="select_setup_type"
+                            id="edit_game_radio" />
+                        <span class="black-text">EDIT SETUP</span>
+                    </label>
+                </p>
+                <p>
+
+                </p>
+            </div>
+            <div class="row" style="margin-top: -25px !important;">
+                <div id="New_Setup" class="setup_type">
+                    <div class="row">
+                        <div class="col s7 push-s5">
+                            <div class="row" style="margin-top: -45px !important;">
+                                <div class="col s12">
+                                    <div style="height:350px; overflow: scroll;">
+                                        <table class="centered small" id="new_setup_table">
+                                            <thead>
+                                                <tr class="grey">
+                                                    <th class="grey" style="width:100px !important;">Game</th>
+                                                    <th class="grey" style="width:150px !important;">Color</th>
+                                                    <th class="grey">One Line</th>
+                                                    <th class="grey">Two Line</th>
+                                                    <th class="grey">Full House</th>
+                                                    <th class="grey">Corner</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s5 pull-s7  grey lighten-4">
+                            <h6 class="flow-text center-align">New Setup</h6>
+                            <div class="divider"></div>
+                            <div class="col s12">
+                                <div class="input-field inline">
+                                    <span>Date
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="datepicker browser-default">
+                                </div>
+                            </div>
+                            <div class="col s12" style="margin-top: -40px !important;">
+                                <div class="input-field inline">
+                                    <span>Game Name</span>
+                                    <input type="text" class="browser-default">
+                                </div>
+                            </div>
+
+                            <div class="col s12" style="margin-top: -40px !important;margin-left: -10px !important;">
+                                <div class="input-field  col s7 ">
+                                    <select id="new_game_ticket_in_play"
+                                        class="browser-default ticket_in_play_new_setup">
+                                        <option value="" disabled selected>Ticket In Play</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="new_setup_btn_grp" class="container">
+                                <div class="row">
+                                    <div class="col s12 right-align">
+                                        <a id="new_save_btn" href="javascript:void(0);"
+                                            class="waves-effect waves-green btn-small black">Save</a>
+                                        <a href="javascript:void(0);"
+                                            class="modal-close waves-effect waves-green btn-flat">Close</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="Edit_Setup" class="setup_type">
+                    <div class="row">
+                        <div class="col s7 push-s5 ">
+                            <div class="row" style="margin-top: -45px !important;">
+                                <div class="col s12">
+                                    <div style="height:350px; overflow: scroll;">
+                                        <table class="centered small" id="edit_setup_table">
+                                            <thead>
+                                                <tr class="grey">
+                                                    <th class="grey" style="width:100px !important;">Game</th>
+                                                    <th class="grey" style="width:150px !important;">Color</th>
+                                                    <th class="grey">One Line</th>
+                                                    <th class="grey">Two Line</th>
+                                                    <th class="grey">Full House</th>
+                                                    <th class="grey">Corner</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s5 pull-s7  grey lighten-4">
+                            <h6 class="flow-text center-align">Edit Setup</h6>
+                            <div class="divider"></div>
+                            <div class="col s12">
+                                <div class="input-field inline">
+                                    <span>Date</span>
+                                    <input type="text" class="datepicker browser-default">
+                                </div>
+                            </div>
+                            <div class="col s12" style="margin-top: -33px !important;margin-left: -10px !important;">
+                                <div class="input-field  col s12 ">
+                                    <select id="game_name_select" class="browser-default edit_game_name_select">
+                                        <option value="" disabled selected>Game Name</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+ <!-- Game Screen prompt -->
+ <div id="modal3" class="modal brown lighten-4" style="width: 80%;">
+    <div class="modal-content brown lighten-4">
+        <div style="margin-top: -40px !important;">
+            <h5 class="center-align red-text" style="font-weight: bold;">ST Limited Game</h5>  
+            <h6 class="center-align red-text" style="font-weight: bold;margin-top: -12px !important;">Jumbo Bingo : Game Name : Color</h6> 
+        </div>         
+       <div class="row" >             
+            <div class="col s6 game-play-div " style="margin-top: -2px !important;">
+                <div class="all-numbers-display center-align">
+                </div> 
+            </div>   
+            <div class="col s6" style="margin-top: -10px !important;">
+                <div class="conatiner">
+                    <div class="row">
+                        <div class="col s10">    
+                          <div class="card-panel yellow center-align red-text text-darken-2" style="margin-left: 60px;">
+                            <div style="margin-top: -180px;">
+                                <span class="number-preview-digit">5</span>                           
+                            </div>                             
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                                               
+            </div>     
+       </div>  
+       
+       <div class="row" >
+        <div class="col s4 bottom-margin">
+            <h6 class="grey-text text-darken-4">
+              <u> <b> Current Ticket </b> </u>       
+            </h6>
+
+            <div id="loading-div" class="progress blue" style="margin-top: 20px;">
+                <div class="indeterminate yellow"></div>
+            </div>
+            <div id="current-ticket-display-div"  style="margin-top: 20px;"></div>
+                            
+             
+        </div>
+        <div class="col s4 bottom-margin">
+            <h6 class="grey-text text-darken-4" style="margin-left: 24px;">
+               <u> <b>Selected Calls</b> </u>                  
+             </h6>
+            
+             <div class="row"  style="margin-top: 20px;">
+                <div class="col s1"></div>
+                 <div class="col s2 white center-align" style="height: 70px;border-style: solid;border-width: 1px;">
+                  <span class="blue-text text-darken-4" style="font-size:3.1rem;font-weight: bold;">1</span>
+                 </div>
+                 <div class="col s2 white center-align" style="height: 70px; margin-left: 5px;border-style: solid;border-width: 1px;">
+                    <span class="blue-text text-darken-4" style="font-size:3.1rem;font-weight: bold;">7</span>
+                </div>
+                <div class="col s2 white center-align" style="height: 70px;margin-left: 5px;border-style: solid;border-width: 1px;">
+                    <span class="blue-text text-darken-4" style="font-size:3.1rem;font-weight: bold;">8</span>
+                </div>                
+             </div>
+             
+            
+            <div class="red-text" style="margin-top: 5px;font-weight: bold;">
+                <span class="blink">Enter Number:</span>   <input id="user-input-number" type="text" class="validate browser-default" style="width: 10%;"> 
+                Wrong Number:   <input id="user-input-wrong-number" type="text" class="validate browser-default" style="width: 10%;"> 
+            </div>
+              
+            <div class="switch" style="margin-top: 5px;">
+              
+                   <label class="black-text">
+                     Audio Off
+                     <input id="audio-btn" type="checkbox" checked>
+                     <span class="lever"></span>
+                     Audio On
+                   </label>
+            </div>
+            
+            
+           
+        </div>
+        <div class="col s4 bottom-margin ">
+            <h6 class="grey-text text-darken-4">
+              <u>  <b> Winners Tickets  </b>   </u>                       
+             </h6>
+             <br/>
+             <span>
+                <b>1 Line winners:</b>
+                <font class=" indigo-text" style="font-weight: bold;">12345,56998,78954</font>
+                <br/>
+            </span>
+            <span>
+               <b>2 Line winners:</b>
+               <font class=" indigo-text" style="font-weight: bold;">12345,56998,78954</font>
+               <br/>
+           </span>
+           <span>
+               <b>Full House winners:</b>
+               <font class=" indigo-text" style="font-weight: bold;">12345,56998,78954</font>
+               <br/>
+           </span>
+           <span>
+               <b>Corner winners:</b>
+               <font class=" indigo-text" style="font-weight: bold;">12345,56998,78954</font>
+               <br/>
+           </span>
+             <br/>
+        </div>
+      </div>  
+      <br/> 
+    </div>   
+    <div class="modal-footer">
+        <a class="btn-small black">Start</a>
+        <a class="btn-small black">Pause</a>
+        <a href="#modal4" class="btn-small black modal-trigger">Verify</a>  
+        <a style="margin-left: 150px;" href="javascript:void(0);" class="modal-close waves-effect waves-green btn-small red darken-4">Exit</a> 
+    </div> 
+</div>
+
+   <!-- Verify Ticket prompt prompt -->
+   <div id="modal4" class="modal" style="width: 20%;">
+    <div class="modal-content ">
+        <div class="row">
+            <div class="col s12">
+                <!-- Enter Ticket Number: -->
+              <div class="input-field inline">
+                <input id="ticket_number" type="text" class="validate">
+                <label for="ticket_number">Enter Ticket Number</label>                
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="modal-footer">
+        <a id="verify-ticket-button" href="javascript:Void(0);" class="waves-effect waves-green btn-small black">OK</a>
+        <a href="javascript:Void(0);" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+</div>
+
+
+
+
+    <!-- <nav class="black">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo white-text" style="font-weight: bold; padding-left: 20px;">
+                Jumbo Bingo : ST Limited
+                
+            </a>
+        </div>        
+    </nav> -->
+
+    <ul id="slide-out" class="sidenav sidenav-fixed scrollbar">
+        <li>
+            <div class="user-view">
+                <div class="background black">
+                </div>
+                <a class="white-text" style="font-size: 2rem;">Dashboard</a>
+                <a href="#name"><span class="white-text name">Samihan</span></a>
+                <a href="#email"><span class="white-text email">samihan@gmail.com</span></a>
+
+            </div>
+        </li>
+        <li>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">settings_applications</i>Setup</div>
+                    <div class="collapsible-body grey lighten-5">
+                        <ul>
+                            <li><a href="#modal1" class="modal-trigger"><i
+                                        class="material-icons">chevron_right</i>Numbering</a></li>
+                            <li><a href="#modal2" class="modal-trigger"><i class="material-icons">chevron_right</i>Game
+                                    setup</a></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">play_arrow</i>Play</div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!"><i class="material-icons">chevron_right</i>Display</a></li>
+                            <li><a href="#modal3" class="modal-trigger"><i
+                                        class="material-icons">chevron_right</i>Game screen</a></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">verified_user</i>Verify</div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!"><i class="material-icons">chevron_right</i>Bingo 90 tickets</a></li>
+                            <li><a href="#!"><i class="material-icons">chevron_right</i>Approve Users</a></a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">insert_drive_file</i>Reports</div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!"><i class="material-icons">chevron_right</i>Game details</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">drafts</i>Others</div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a href="#!"><i class="material-icons">chevron_right</i>Help</a></li>
+                            <li><a href="#!"><i class="material-icons">chevron_right</i>Feedback</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </li>
+
+    </ul>
+    <a href="#" data-target="slide-out"
+        class="sidenav-trigger large  right-align black-text hide-on-large-only show-on-small"
+        style="font-size: 1.5rem !important;"><i class="material-icons">menu</i></a>
+
+
+
+    <main>
+        <div class="container">
+            <img id="dashboard-img" class="responsive-img center-align" src="/assets/media/bingo-startup-index.jpg"  style="margin-top: 3%;"/>
+            <div >
+               
+            </div>
+        </div>
+       
+    </main>
+
+
+
+    <!-- <footer class="page-footer black" style="margin-top: 37px;">           
+            <div class="footer-copyright">
+              <div class="container">
+              © 2021 Copyright SIVA Tec Ltd.               
+              </div>
+            </div>
+          </footer> -->
+
+
+    <script type="text/javascript" src="/assets/jquery.js"></script>
+    <script type="text/javascript" src="/assets/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/assets/jumbobingo.js"></script>
+</body>
+
+</html>

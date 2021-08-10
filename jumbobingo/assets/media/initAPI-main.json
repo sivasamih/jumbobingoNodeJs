@@ -1,0 +1,18 @@
+{
+    "domain": "http://203.122.12.38/",
+    "ColorList": "WebserviceDemo/WebService.asmx/ColorList",
+    "UserNumbers": "WebserviceDemo/WebService.asmx/UserNumbers",
+    "GetAllTktTypes": "WebserviceDemo/WebService.asmx/GetAllTktTypes",
+    "GetTicketTypeDetails": "WebserviceDemo/WebService.asmx/GetTicketTypeDetails",
+    "IsEmailIDExist": "WebserviceDemo/WebService.asmx/IsEmailIDExist",
+    "GetAllUsers": "WebserviceDemo/WebService.asmx/GetAllUsers",
+    "GetTicketData": "WebserviceDemo/WebService.asmx/GetTicketData",
+    "Login": "WebserviceDemo/WebService.asmx/Login",  
+    "Register": "WebserviceDemo/WebService.asmx/Register",
+    "ActiveUser": "WebserviceDemo/WebService.asmx/ActiveUser",
+    "UpdateGameSetup":"WebserviceDemo/WebService.asmx/UpdateGameSetup",
+    "GetAllGames":"WebserviceDemo/WebService.asmx/GetAllGames",
+    "ActiveGame":"WebserviceDemo/WebService.asmx/ActiveGame"
+}
+
+ 

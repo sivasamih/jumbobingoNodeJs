@@ -1,0 +1,17 @@
+{
+    "domain": "http://localhost:51924/",
+    "ColorList": "WebService.asmx/ColorList",
+    "UserNumbers": "WebService.asmx/UserNumbers",
+    "GetAllTktTypes": "WebService.asmx/GetAllTktTypes",
+    "GetTicketTypeDetails": "WebService.asmx/GetTicketTypeDetails",
+    "IsEmailIDExist": "WebService.asmx/IsEmailIDExist",
+    "GetAllUsers": "WebService.asmx/GetAllUsers",
+    "GetTicketData": "WebService.asmx/GetTicketData",
+    "Login": "WebService.asmx/Login",  
+    "Register": "WebService.asmx/Register",
+    "ActiveUser": "WebService.asmx/ActiveUser",
+    "UpdateGameSetup":"WebService.asmx/UpdateGameSetup",
+    "GetAllGames":"WebService.asmx/GetAllGames",
+    "ActiveGame":"WebService.asmx/ActiveGame"
+}
+

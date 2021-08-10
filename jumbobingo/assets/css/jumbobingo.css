@@ -1,0 +1,77 @@
+
+html{
+    font-family: 'Times New Roman';
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+.bold{
+    font-weight: bold;
+}
+
+.siva-logo{
+    height:80px;
+    width: 220px;
+    padding-left: 15px;
+}
+ 
+/* nav{
+  border-bottom-style: solid;
+  border-bottom-color: #0d47a1 ;
+  border-bottom-width: 5px;
+} */
+
+.flash-screen{
+    width: 100% !important;
+    height:500px !important;
+    background-image: url("/assets/media/splash-screen.jpg");
+    background-repeat: no-repeat;
+     margin-left: 10%;
+    margin-right: 10%;
+    /* margin-top: 10%; */
+}
+
+.margin-top-10{
+    margin-top: 250px !important;     
+    margin-left: 290px;
+}
+
+@media screen and (max-width:1024px) and (min-width:768px){
+    .flash-screen{
+        width: 100% !important;
+        height:500px !important;
+        background-image: url("/assets/media/splash-screen.jpg");
+        background-repeat: no-repeat;
+        /* margin-left: 5%; */
+        /* margin-right: 10%; */
+        margin-top: 10%;
+    }
+}
+
+ 
+
+@media screen and (max-width: 750px){
+    .flash-screen{
+        width: 100% !important;
+        height:500px !important;
+        background-image: url("/assets/media/splash-screen-small.jpg");
+        background-repeat: no-repeat;
+        /* margin-left: 10%;
+        margin-right: 10%; */
+        margin-top: 10%;
+    }
+
+    .margin-top-10{
+        margin-top: 100px !important;       
+        margin-left: 100px;
+    }
+
+}

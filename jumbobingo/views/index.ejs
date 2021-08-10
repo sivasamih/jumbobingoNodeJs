@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jumbo Bingo</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/jumbobingo.css" media="screen,projection" />
+
+  <style>
+    #modal2 {
+      height: 80%;
+      max-height: 100%;
+      margin-top: -30px !important;
+      cursor: pointer;
+    }
+
+    .login-btn-css{
+      border-radius: 50px !important;
+    }
+
+    .modal-css{
+            border-style: solid;border-width: 2px;border-color: #b71c1c;
+    }
+
+    body {
+        background-image: url("media/bg-02.png");
+        background-color: #ffffff;
+        background-repeat: no-repeat;
+      }
+
+    td,
+    th {
+      padding: 1px 1px !important;
+
+    }
+  </style>
+
+</head>
+
+<body class="white">
+
+
+  <!-- Login prompt -->
+  <div id="modal1" class="modal modal-css white"
+    style="width: 30%;">
+    <div class="modal-content">
+      <span class="right modal-close"> <i class="material-icons">close</i></span>
+      <h4 class="center-align indigo-text text-darken-4"><b>Login</b></h4>
+
+      <div class="container">
+        <br />
+        <table style="border-style: none !important;border-collapse:initial !important;">
+          <tr>
+            <td>
+              User ID
+            </td>
+            <td>&nbsp;</td>
+            <td style="width: 300px !important;">
+              <input id="user_id" type="text" class="validate browser-default" style="width:100%">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Password
+            </td>
+            <td>&nbsp;</td>
+            <td style="width: 300px !important;">
+              <input id="password" type="password" class="validate browser-default" style="width:100%">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              &nbsp;
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <a id="login-btn" class="btn-small indigo darken-4">Login</a>
+            </td>
+          </tr>
+        </table>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Register prompt -->
+  <div id="modal2" class="modal modal-css white"
+    style="width: 40%;">
+    <div class="modal-content">
+      <span class="right modal-close "> <i class="material-icons">close</i></span>
+      <h4 class="center-align indigo-text text-darken-4"><b>Register</b></h4>
+      <div class="container ">
+        <br />
+        <table style="border-style: none !important;border-collapse:initial !important;">
+          <tr>
+            <td>
+              Club Name<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="reg-club-name" type="text" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Address Line 1<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="address_line_1" type="text" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Address Line 2
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="address_line_2" type="text" class="validate browser-default">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Post code<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="post_code" type="text" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              City<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="city" type="text" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Country<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="country" type="text" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Website
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="website" type="text" class="validate browser-default">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Contact person<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="contact_person" type="text" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Phone no
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="phone_no" type="text" class="validate browser-default">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Email ID<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="reg_email_id" type="email" class="validate browser-default input-chk">
+            </td>
+            <td>
+              <span id="reg-email-blank">&nbsp;</span>
+              <i id="reg-email-reject-icon" class=" material-icons red-text" style="font-size: 1.5rem;"><b>clear</b></i>
+              <i id="reg-email-accept-icon" class=" material-icons green-text text-darken-4"
+                style="font-size: 1.5rem;"><b>check</b></i>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Password<span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="reg-password" type="password" class="validate browser-default input-chk">
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              Conf. Password <span class="red-text">*</span>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input id="conf-password" type="password" class="validate browser-default input-chk">
+            </td>
+            <td>
+              <span id="conf-chk-msg">&nbsp;</span>
+            </td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>
+              <a id="register-btn" class="btn-small indigo darken-4" disabled>Register</a>
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <a id="reset-btn" class="btn-small btn-flat">Reset</a>
+            </td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <nav class="indigo darken-4">
+    <marquee>
+     <a class="white-text">
+       Play Your Favorite Bingo game, <span class="orange-text">Valid with all Jumbo Bingo tickets (An initiative from the makers of Jumbo Bingo)</span>
+     </a>
+    </marquee>     
+  </nav>
+
+ <div class="row">
+  <div class="col s12">
+    <div class="left" style="margin-top: 250px; margin-left: -580px !important;">
+
+      <div id="hide-when-logged-in">
+        <div class="row ">
+          <div class="col ">
+            <a class="waves-effect waves-light btn-small white-text bold center-align modal-trigger login-btn-css indigo darken-4" href="#modal1"
+              style="font-size: 24px;">LOGIN</a>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col ">
+            <a class="black-text">Not Registered yet? </a>
+            <a class="indigo-text text-darken-4 bold center-align modal-trigger" href="#modal2"> <u>REGISTER
+                HERE</u></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ </div>
+
+  <!-- <div class="row">
+    <div class="col s7 push-s5">
+      <br />
+      <img class="responsive-img" src="/assets/media/bingo-startup-index.jpg" />
+      
+    </div>
+    <div class="col s5 pull-s7">
+
+      <div style="margin-top: 150px;">
+
+        <div id="hide-when-logged-in">
+          <div class="row ">
+            <div class="col ">
+              <a class="waves-effect waves-light btn-small white-text bold center-align modal-trigger login-btn-css indigo darken-4" href="#modal1"
+                style="font-size: 24px;">LOGIN</a>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col ">
+              <a class="black-text">Not Registered yet? </a>
+              <a class="indigo-text text-darken-4 bold center-align modal-trigger" href="#modal2"> <u>REGISTER
+                  HERE</u></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div> -->
+
+
+
+
+
+<!-- 
+  <footer class="page-footer indigo darken-4" style="margin-top: 37px;">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2021 Copyright SIVA Tec Ltd.
+      </div>
+    </div>
+  </footer> -->
+
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="js/jumbobingo.js"></script>
+</body>
+
+</html>
