@@ -332,7 +332,7 @@ $(document).ready(function () {
         if(manualEnterKeyPress==true || autoCallsSet==true){
             $("#game-manual-enter-number-display").hide();
         }
-        $("#gameScreen-game-select").prop("disabled", true);
+        // $("#gameScreen-game-select").prop("disabled", true);
     }
 
     function fillTicketInPlayNewSetupDropdown() {
@@ -1658,6 +1658,10 @@ $(document).ready(function () {
         gameStartCalledNumbers=[];
         bingo.clearRandom();
       }
+
+      $("#game-modal-clear-btn").click(function(){
+        clearGame();
+      });
 
     $("#select-game-modal-choose-game").on("change", function (e) {  
         // $("#play-btn-from-select-game").attr("disabled", false);
