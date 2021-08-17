@@ -609,6 +609,8 @@ $(document).ready(function () {
         }
         if (location == "inSideGame") {            
             console.log("inside");
+            setEnteredTicketNo();
+            disableAllGameBtns();
             showAdminBoogieOrWinnerPrompt();
             
 
@@ -660,6 +662,11 @@ $(document).ready(function () {
         }
 
 
+    }
+
+
+    function setEnteredTicketNo(){
+        $(".current-verify-ticket-entered").text(insideSelectedVerifyTicketVal);
     }
 
     function validateRowStrike() {
@@ -1181,7 +1188,25 @@ $(document).ready(function () {
 
     });
 
-     
+    $("#verify-ticket-cancel-button").click(function(){
+        enableAllGameBtnsExceptStart();
+    });
+
+     function disableAllGameBtns(){
+           $("#start-game-btn").attr("disabled", true);   
+           $("#pause-game-btn").attr("disabled", true);
+           $("#game-modal-verify-btn").attr("disabled", false);
+           $("#game-modal-clear-btn").attr("disabled", true);
+           $("#exitInitiate-game-btn").attr("disabled", true);
+     }
+
+     function enableAllGameBtnsExceptStart(){
+        $("#start-game-btn").attr("disabled", false);   
+        $("#pause-game-btn").attr("disabled", true);
+        $("#game-modal-verify-btn").attr("disabled", false);
+        $("#game-modal-clear-btn").attr("disabled", false);
+        $("#exitInitiate-game-btn").attr("disabled", false);
+    }
 
     function showAdminBoogieOrWinnerPrompt(){
 
@@ -1191,14 +1216,15 @@ $(document).ready(function () {
         console.log("showAdminBoogieOrWinnerPrompt > AllGameDetails > ",AllGameDetails);
         console.log("================================================================");
         var html="";
-        var divStart="<div style='margin-left:10px !important; margin-top:-10px !important;'>";
+        var divStart="<div class='white' style='margin-left:10px !important; margin-top:-10px !important;'>";
         var divEnd="</div>";
+        var msgTxt="<p>Please confirm ticket number <b>"+insideSelectedVerifyTicketVal+"</b> is : </p>";
         var oneLine="<p><label><input name='group1' type='radio' value='One Line'/><span class='black-text'>One Line</span></label></p>";
         var twoLine="<p><label><input name='group1' type='radio' value='Two Line' /><span class='black-text'>Two Line</span></label></p>";
         var fullHouse="<p><label><input name='group1' type='radio' value='Full House' /><span class='black-text'>Full House</span></label></p>";
         var corner="<p><label><input name='group1' type='radio' value='Corner' /><span class='black-text'>Corner</span></label></p>";
         var selectBooggie="<p><label><input name='group1' type='radio' value='Boogie' class='this-is-boogie-radio' /><span class='black-text'>Boogie</span></label></p>";
-        var btn="<div class='right' style='margin-top:-35px !important;'><a  id='game-check-ticket-ok-btn' class='btn-flat'>OK</a> <a id='game-check-ticket-cancel-btn' class='btn-flat'>CANCEL</a> </div>";
+        var btn="<div class='right' style='margin-top:-35px !important;'><a  id='game-check-ticket-ok-btn' class='btn-flat'>Confirm</a> <a id='game-check-ticket-cancel-btn' class='btn-flat'>CANCEL</a> </div>";
         
         $.each(AllGameDetails, function (key, value) {            
             if(value.ID==selectedGameID){
@@ -1217,7 +1243,7 @@ $(document).ready(function () {
             }
           });
 
-          html=divStart+html+selectBooggie+btn+divEnd;
+          html=divStart+msgTxt+html+selectBooggie+btn+divEnd;
               
           $("#game-winner-options-display").html(html);
           $("#game-winner-options-display").show();
@@ -1241,6 +1267,7 @@ $(document).ready(function () {
         boogieTicketsSelected.push(obj);
         
         displayWinnerList();
+        enableAllGameBtnsExceptStart();
        console.log("============================================================");
        $("#game-winner-list-display").show();
        $("#game-winner-options-display").hide();
@@ -1306,12 +1333,18 @@ $(document).ready(function () {
 
     $(document).on('click', '#game-check-ticket-cancel-btn', function () {    
         console.log("game-check-ticket-cancel-btn > clicked");
-        $("#game-winner-list-display").show();
-        $("#game-winner-options-display").hide();
+        // enableAllGameBtnsExceptStart();
+        // $("#game-winner-list-display").show();
+        // $("#game-winner-options-display").hide();
+        cancelBoogieTicketVerify();
      });
 
     
-     
+     function cancelBoogieTicketVerify(){
+        enableAllGameBtnsExceptStart();
+        $("#game-winner-list-display").show();
+        $("#game-winner-options-display").hide();
+     }
 
 
     $("#verify-ticket-button").click(function () {
@@ -1327,7 +1360,7 @@ $(document).ready(function () {
             });
         } else {
             $("#game-winner-list-display").hide();
-            $('.modal#modal4').modal('close');
+           $('.modal#modal4').modal('close');
             var url = (initAPIs.domain + initAPIs.GetTicketData).toString();
             var D = {
                 "ID": ticket_val
@@ -1651,11 +1684,15 @@ $(document).ready(function () {
         $("#second-last-call").text("");
         $("#third-last-call").text("");
         $(".number-preview-digit").html("");
+        $(".current-verify-ticket-entered").text("");
         $("#game-winner-options-display").html("<br/>");
         $("#game-winner-list-display").html("<br/>");
         loadInitialblankTicketDesign();
+        cancelBoogieTicketVerify();
         setAllNumbersDisplay(numberings);
         gameStartCalledNumbers=[];
+        boogieTicketsSelected=[];
+        insideSelectedVerifyTicketVal="";
         bingo.clearRandom();
       }
 
