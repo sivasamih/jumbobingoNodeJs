@@ -1,5 +1,5 @@
 {
-    "domain": "http://localhost:51924/",
+    "domain": "http://103.86.176.85:81/",
     "ColorList": "WebService.asmx/ColorList",
     "UserNumbers": "WebService.asmx/UserNumbers",
     "GetAllTktTypes": "WebService.asmx/GetAllTktTypes",

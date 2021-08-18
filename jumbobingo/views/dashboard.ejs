@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jumbo Bingo</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="css/jumbobingo.css" media="screen,projection" />
 
     <style>
-  body {
-        background-image: url("media/bg-02.png");
-        background-color: #ffffff;
-        background-repeat: no-repeat;
-      }
+        body {
+            background-image: url("media/bg-02.png");
+            background-color: #ffffff;
+            background-repeat: no-repeat;
+        }
 
         nav,
         header,
@@ -93,7 +92,7 @@
             border-spacing: unset !important;
         }
 
-        #userListTable tbody tr{
+        #userListTable tbody tr {
             height: 50px !important;
             line-height: 50px !important;
         }
@@ -116,15 +115,17 @@
         }
 
         .number-preview-digit {
-            font-size: 27rem;
+            font-size: 28rem;
             font-weight: bold;
-
         }
 
         .all-numbers-display {
             padding-top: 10px !important;
             padding-left: 10px !important;
+            /* padding-right: 10px !important; */
         }
+
+
 
         .all-number-initial-pointer {
             color: #fff;
@@ -149,9 +150,10 @@
         #modal3 {
             height: 99%;
             max-height: 100%;
-            /* overflow: visible; */
+            /* overflow-y: hidden !important; */
             margin-top: -72px !important;
             cursor: pointer;
+
         }
 
         #modal6 {
@@ -175,7 +177,7 @@
             margin-top: -70px !important;
         }
 
-        #approveUsersModal{
+        #approveUsersModal {
             height: 95%;
             max-height: 100%;
             margin-top: -70px !important;
@@ -186,8 +188,8 @@
             width: 100%;
         }
 
-        .radio-label{
-            color:#000 !important;
+        .radio-label {
+            color: #000 !important;
         }
 
         .row-bottom-border {
@@ -237,8 +239,40 @@
             background-color: #fff !important;
         }
 
-        .modal-css{
-            border-style: solid;border-width: 2px;border-color: #b71c1c;
+        .modal-css {
+            border-style: solid;
+            border-width: 2px;
+            border-color: #b71c1c;
+        }
+
+        .margin-left-35 {
+            margin-left: -35px !important;
+        }
+
+        .preview-digit-margin {
+            margin-top: -135px;
+            margin-left: -35px;
+
+        }
+
+        .horizontal-display {
+            display: none;
+        }
+
+        .vertical-display {
+            display: none;
+        }
+
+        .game-h1-cN {
+            font-weight: bold;
+            letter-spacing: 4px;
+            font-size: 3rem !important;
+        }
+
+        .game-title-h6 {
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 1.6rem !important;
         }
 
 
@@ -250,23 +284,125 @@
                 padding-left: 0;
             }
         }
+
+        @media only screen and (max-width: 1900px) {
+            .card-panel {
+                height: 370px !important;
+                width: 100%;
+            }
+
+            .margin-left-35 {
+                margin-left: 30px !important;
+            }
+
+            .number-preview-digit {
+                font-size: 28rem;
+                font-weight: bold;
+            }
+
+            .preview-digit-margin {
+                margin-top: -150px;
+                margin-left: -38px;
+            }
+
+        }
+
+        /* 992, 1400*/
+
+
+        @media only screen and (max-width: 1400px) {
+
+            .margin-left-35 {
+                margin-left: 10px !important;
+            }
+
+            .number-preview-digit {
+                font-size: 20rem;
+                font-weight: bold;
+            }
+
+            .card-panel {
+                height: 370px !important;
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 1285px) {
+
+            .margin-left-35 {
+                margin-left: 1px !important;
+            }
+
+            .number-preview-digit {
+                font-size: 18rem;
+                font-weight: bold;
+            }
+
+            .preview-digit-margin {
+                margin-top: -50px !important;
+                /* margin-left: -38px; */
+            }
+
+            .card-panel {
+                height: 370px !important;
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 1024px) {
+
+            .margin-left-35 {
+                margin-left: 1px !important;
+            }
+
+            .number-preview-digit {
+                font-size: 18rem;
+                font-weight: bold;
+            }
+
+            .preview-digit-margin {
+                margin-top: -40px !important;
+                margin-left: -35px;
+            }
+
+            .card-panel {
+                height: 320px !important;
+                width: 100%;
+                border-radius: 20px !important;
+            }
+        }
+
+        @media only screen and (max-width: 992px) {
+            .horizontal-display {
+                display: block;
+            }
+
+            .vertical-display {
+                display: none;
+            }
+
+            /* .horizontal-display .col{
+                 margin-right:1px !important;
+             } */
+
+        }
     </style>
 
 </head>
 
 <body class="grey lighten-5">
     <!-- Numbering prompt -->
-    <div id="modal1" class="modal modal-css white"
-        style="width: 70%;">
+    <div id="modal1" class="modal modal-css white" style="width: 70%;">
         <div class="modal-content ">
-               
+
             <div class="row ">
-                <h5 class="left-align indigo-text text-darken-4" style="margin-top: -10px !important;"><b>Numbering</b></h5>
+                <h5 class="left-align indigo-text text-darken-4" style="margin-top: -10px !important;"><b>Numbering</b>
+                </h5>
                 <div class="divider"></div>
             </div>
 
             <div class="row ">
-                <b>Language:</b><br /><br/>
+                <b>Language:</b><br /><br />
                 <select id="game-voice-language" class="browser-default voice-language col s6">
                     <option value="" disabled>Select Game Speech Language</option>
                 </select>
@@ -292,12 +428,12 @@
     </div>
 
     <!-- Game setup prompt -->
-    <div id="modal2" class="modal modal-css white"
-        style="width: 90%;">
+    <div id="modal2" class="modal modal-css white" style="width: 90%;">
         <div class="modal-content ">
             <span class="right modal-close"> <i class="material-icons">close</i></span>
             <div class="row">
-                <h5 class="left-align indigo-text text-darken-4" style="margin-top: -10px !important;"><b>Game Setup</b></h5>
+                <h5 class="left-align indigo-text text-darken-4" style="margin-top: -10px !important;"><b>Game Setup</b>
+                </h5>
                 <div class="divider"></div>
             </div>
             <div class="row">
@@ -327,8 +463,10 @@
                                         <table class="centered small" id="new_setup_table">
                                             <thead>
                                                 <tr class="indigo darken-4">
-                                                    <th class="indigo darken-4 white-text" style="width:100px !important;">Game</th>
-                                                    <th class="indigo darken-4 white-text" style="width:150px !important;">Color</th>
+                                                    <th class="indigo darken-4 white-text"
+                                                        style="width:100px !important;">Game</th>
+                                                    <th class="indigo darken-4 white-text"
+                                                        style="width:150px !important;">Color</th>
                                                     <th class="indigo darken-4 white-text">One Line</th>
                                                     <th class="indigo darken-4 white-text">Two Line</th>
                                                     <th class="indigo darken-4 white-text">Full House</th>
@@ -363,7 +501,6 @@
                                 <div class="input-field  col s4">
                                     <select id="new_game_ticket_in_play"
                                         class="browser-default ticket_in_play_new_setup">
-                                        
                                     </select>
                                 </div>
                             </div>
@@ -372,7 +509,7 @@
                                     <div class="col s12 right-align">
                                         <a id="new_save_btn" href="javascript:void(0);"
                                             class="waves-effect waves-green btn-small black">Save</a>
-                                         
+
                                     </div>
                                 </div>
                             </div>
@@ -380,25 +517,25 @@
                             <div id="new-game-note" class="right">
                                 <p class="brown-text">
                                     Note: Selecting one option for each Game is compulsary.
-                                   
-                                </p> 
+
+                                </p>
                                 <div class="right">
                                     <span class="brown-text">
                                         <i class="medium material-icons">subdirectory_arrow_right</i>
                                     </span>
                                 </div>
-                                
+
                             </div>
                             <div id="new-btn-action-loader">
                                 <div class="row">
-                                    <div class="col s12 right-align">                                      
+                                    <div class="col s12 right-align">
                                         <div class="progress">
                                             <div class="indeterminate"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                           
+
 
                         </div>
                     </div>
@@ -413,8 +550,10 @@
                                         <table class="centered small" id="edit_setup_table">
                                             <thead>
                                                 <tr class="indigo darken-4 white-text">
-                                                    <th class="indigo darken-4" style="width:100px !important;">Game</th>
-                                                    <th class="indigo darken-4" style="width:150px !important;">Color</th>
+                                                    <th class="indigo darken-4" style="width:100px !important;">Game
+                                                    </th>
+                                                    <th class="indigo darken-4" style="width:150px !important;">Color
+                                                    </th>
                                                     <th class="indigo darken-4">One Line</th>
                                                     <th class="indigo darken-4">Two Line</th>
                                                     <th class="indigo darken-4">Full House</th>
@@ -440,22 +579,22 @@
                             <div class="col s6" style="margin-top: -33px !important;margin-left: -10px !important;">
                                 <div class="input-field  col s12 ">
                                     <select id="edit-game-name-select" class="browser-default edit_game_name_select">
-                                        <option value=""  disabled selected>Game Name</option>           
-                                                                   
+                                        <option value="" disabled selected>Game Name</option>
+
                                     </select>
                                 </div>
                                 <div>
-                                    
+
                                 </div>
                             </div>
                             <div class="col s6" style="margin-top: -33px !important;margin-left: -10px !important;">
                                 <div id="show-ticket-no" style="margin-top: 22px !important;">
                                     <h5>
-                                        <i class="material-icons">chevron_right</i>   
-                                        <b id="edit-game-selected-display-ticketNo" class="grey lighten-3 grey-text " 
-                                        style="border-style: solid;border-width: 1px;padding-left: 20px;padding-right: 20px;padding-top: 7px;padding-bottom: 7px;">
-                                        
-                                    </b>
+                                        <i class="material-icons">chevron_right</i>
+                                        <b id="edit-game-selected-display-ticketNo" class="grey lighten-3 grey-text "
+                                            style="border-style: solid;border-width: 1px;padding-left: 20px;padding-right: 20px;padding-top: 7px;padding-bottom: 7px;">
+
+                                        </b>
                                     </h5>
                                 </div>
                             </div>
@@ -466,13 +605,13 @@
                                             class="waves-effect waves-green btn-small red">DEACTIVATE</a>
                                         <a id="edit_save_btn" href="javascript:void(0);"
                                             class="waves-effect waves-green btn-small black">Save</a>
-                                         
+
                                     </div>
                                 </div>
                             </div>
                             <div id="edit-btn-action-loader">
                                 <div class="row">
-                                    <div class="col s12 right-align">                                      
+                                    <div class="col s12 right-align">
                                         <div class="progress">
                                             <div class="indeterminate"></div>
                                         </div>
@@ -486,37 +625,165 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <!-- Game Screen prompt -->
-    <div id="modal3" class="modal brown lighten-4"
-        style="width: 80%; border-style: solid;border-width: 4px;border-color: #eceff1;">
-        <div class="modal-content brown lighten-4">
-            <div style="margin-top: -20px !important;">
-                <h1 class="center-align light-blue-text text-darken-4 user-clubName" style="font-weight: bold;">Jumbo Bingo Game</h1>
-                <h6 class="center-align light-blue-text text-darken-3"
-                    style="font-weight: bold;margin-top: -12px !important;"> <span class="black-text">Jumbo Bingo</span> : <span class="ScreengameName"></span> : <span  class="ScreengameColor"></span></h6>
+    <div id="modal3" class="modal lime lighten-3"
+        style="width: 90%; border-style: solid;border-width: 4px;border-color: #eceff1;">
+        <div class="modal-content lime lighten-3">
+            
+            <div class="right">
+                <div class="switch ">
+                    <label class="black-text">
+                        AUDIO OFF
+                        <input id="audio-btn" type="checkbox" checked>
+                        <span class="lever"></span>
+                        AUDIO ON
+                    </label>
+                </div>
             </div>
+            <div style="margin-top: -24px !important;" class="center-align">
+                <h1 class="center-align light-blue-text text-darken-4 user-clubName game-h1-cN"></h1>
+                <h6 class="center-align light-blue-text text-darken-3 game-title-h6"
+                    style="margin-top: -20px !important;"> <span class="black-text">Jumbo Bingo</span> : <span
+                        class="ScreengameName red-text"></span> : <span class="ScreengameColor red-text"></span></h6>
+            </div>
+            
+            <div class="divider"></div>
             <div class="row">
-                <div class="col s6 game-play-div " style="margin-top: 10px !important;">
+                <div class="col s12 l7 m7 game-play-div" style="margin-top: 1px !important;">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="all-numbers-display center-align"> </div>
+                        </div>
+                    </div>     
+                    <div class="row">
+                        <div class="col s6"  style="margin-top: -10px !important;">
+                            <h6 class="grey-text text-darken-4">
+                                <u> <b> Current Ticket </b> </u>
+                                <b><span class="red-text current-verify-ticket-entered"></span></b>
+                            </h6>
+                            <div id="loading-div" class="progress blue" style="margin-top: 20px;">
+                                <div class="indeterminate yellow"></div>
+                            </div>
+                            <div id="current-ticket-display-div" style="margin-top: 5px;"></div>
+                            <select id="gameScreen-game-select" class="browser-default " style="margin-top: 11px;">
+        
+                            </select>
+                        </div>
+                        <div class="col s6" style="margin-top: -10px !important;">
+                           
+
+                            <h6 class="grey-text text-darken-4">
+                                <u> <b> Winners Tickets </b> </u>
+                            </h6>
+                            <br />
+                            <div style="border-style: dashed;border-width: 1px;">
+                                <div id="game-winner-options-display">
+                                    <br />
+                                </div>
+                                <div id="game-winner-list-display" style="margin-left: 10px !important;">
+                                    <br />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>               
+                    
+                </div>
+                <div class="col s12 l5 m5">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card-panel amber darken-4 center-align black-text text-darken-2" style="border-radius: 20px !important;">
+                                <div class="preview-digit-margin">
+                                    <span class="number-preview-digit"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="margin-left: 20px !important;">
+                            <div class="col s3 white center-align"
+                            style="height: 90px;border-style: solid;border-width: 1px;margin-top: -20px !important;">
+                            <div style="margin-top: -24px;">
+                                <span id="third-last-call" class="green-text text-darken-4" style="font-size:6rem;font-weight: bold;"></span>
+                            </div>
+                        </div>
+                    
+                        <div class="col s1 center-align red-text" style="margin-top: -20px">
+                            <div class="center-align" style="margin-top: 20px;">
+                                <i class="small material-icons ">arrow_back</i>
+                            </div>
+                        </div>
+                    
+                        <div class="col s3 white center-align"
+                            style="height: 90px;border-style: solid;border-width: 1px;margin-top: -20px !important;">
+                            <div style="margin-top: -24px;">
+                                <span id="second-last-call" class="green-text text-darken-4" style="font-size:6rem;font-weight: bold;"></span>
+                            </div>
+                        </div>
+                    
+                        <div class="col s1 center-align red-text" style="margin-top: -20px">
+                            <div class=" center-align" style="margin-top: 20px;">
+                                <i class="small material-icons ">arrow_back</i>
+                            </div>
+                        </div>
+                        <div class="col s3  white center-align"
+                            style="height: 90px;border-style: solid;border-width: 1px;margin-top: -20px !important;">
+                            <div style="margin-top: -24px;">
+                                <span id="recent-call" class="green-text text-darken-4" style="font-size:6rem;font-weight: bold;"></span>
+                            </div>
+                        </div>
+                    
+                        </div>
+                       
+                    
+                    </div>
+                    <div class="row">
+                        <div id="game-manual-enter-number-display" class="red-text center" style="margin-top: 20px;font-weight: bold;">
+                            <span class="blink">Enter Number:</span> <input id="game-screen-user-input-number" type="text"
+                                class="validate browser-default" style="width: 10%;">
+                            Wrong Number: <input id="user-input-wrong-number" type="text" class="validate browser-default"
+                                style="width: 10%;">
+                        </div>
+
+                        <div class="center" style="margin-top: 10px !important;">
+                            <a id="start-game-btn" class="btn-small black" style="margin-bottom: 2px !important;">Start</a>
+                                <a id="pause-game-btn" class="btn-small black" style="margin-bottom: 2px !important;">Pause</a>
+                                <a id="game-modal-verify-btn" href="#modal4" class="btn-small black modal-trigger"
+                                    style="margin-bottom: 2px !important;">Verify</a>
+                                <a id="game-modal-clear-btn" href="javascript:void(0);" class="btn-small black"
+                                    style="margin-bottom:2px !important;">Clear</a>
+                            <a id="exitInitiate-game-btn" href="#modal10"
+                            class="modal-trigger waves-effect waves-green btn-small red darken-4"
+                            style="margin-bottom: 2px !important;">Exit</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+            <div class="row">
+                <div class="col s6 l6 m12 game-play-div " style="margin-top: 10px !important;">
                     <div class="all-numbers-display center-align">
                     </div>
                 </div>
-                <div class="col s6">
-                    <div class="conatiner">
+                <div class="col s6 l6 m12">
+                    <div class="">
                         <div class="row">
-                            <div class="col s8" style="margin-top: 15px !important;">
-                                <div style="margin-left: -35px;">
+                            <div class="col s8 l8 m12" style="margin-top: 15px !important;">
+                                <div class="margin-left-35">
                                     <div class="card-panel yellow center-align red-text text-darken-2">
-                                        <div style="margin-top: -135px;margin-left: -35px;">
+                                        <div class="preview-digit-margin">
                                             <span class="number-preview-digit"></span>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="col s4" style="margin-top: 8px !important;">
+                            <div class="col s4 l4 m12" style="margin-top: 8px !important;">
                                 <div class="col s12 center-align" style="margin-top: -60px !important;">
                                     <h5 class="grey-text text-darken-4" style="margin-left: 24px;">
                                         <u> <b>Recent Calls</b> </u>
@@ -524,35 +791,55 @@
                                 </div>
                                 <div style="margin-left: 20px;">
                                     <div class="container">
-                                        <div class="col s12 white center-align"
-                                            style="height: 90px;border-style: solid;border-width: 1px;">
-                                            <div style="margin-top: -24px;">
-                                                <span id="recent-call" class="light-blue-text"
-                                                style="font-size:6rem;font-weight: bold;"></span>
-                                            </div>                                            
-                                        </div>
-                                        <div class="col s12  center-align red-text">
-                                            <i class="medium material-icons ">arrow_downward</i>
-                                        </div>
-                                        <div class="col s12 white center-align"
-                                            style="height: 90px;border-style: solid;border-width: 1px;">
-                                            <div style="margin-top: -24px;">
-                                                <span id="second-last-call" class="light-blue-text"
-                                                style="font-size:6rem;font-weight: bold;"></span>
+                                        <div class="horizontal-display">
+                                            <div class="col s4 white center-align" style="height: 90px;border-style: solid;border-width: 1px;">
+                                                <div style="margin-top: -24px;">
+                                                    <span id="recent-call" class="light-blue-text" style="font-size:6rem;font-weight: bold;"></span>
+                                                </div>
                                             </div>
                                             
-                                        </div>
-                                        <div class="col s12  center-align red-text">
-                                            <i class="medium material-icons ">arrow_downward</i>
-                                        </div>
-                                        <div class="col s12 white center-align"
-                                            style="height: 90px;border-style: solid;border-width: 1px;">
-                                            <div style="margin-top: -24px;">
-                                                <span id="third-last-call" class="light-blue-text"
-                                                style="font-size:6rem;font-weight: bold;"></span>
+                                            <div class="col s4 white center-align" style="height: 90px;border-style: solid;border-width: 1px;">
+                                                <div style="margin-top: -24px;">
+                                                    <span id="second-last-call" class="light-blue-text" style="font-size:6rem;font-weight: bold;"></span>
+                                                </div>                                            
                                             </div>
-                                            
+                                             
+                                            <div class="col s4 white center-align" style="height: 90px;border-style: solid;border-width: 1px;">
+                                                <div style="margin-top: -24px;">
+                                                    <span id="third-last-call" class="light-blue-text" style="font-size:6rem;font-weight: bold;"></span>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div class="vertical-display">
+                                            <div class="col s12 white center-align" style="height: 90px;border-style: solid;border-width: 1px;">
+                                                <div style="margin-top: -24px;">
+                                                    <span id="recent-call" class="light-blue-text" style="font-size:6rem;font-weight: bold;"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col s12  center-align red-text">
+                                                <div class=" center-align">
+                                                    <i class="medium material-icons ">arrow_downward</i>
+                                                </div>                                               
+                                            </div>
+                                            <div class="col s12 white center-align" style="height: 90px;border-style: solid;border-width: 1px;">
+                                                <div style="margin-top: -24px;">
+                                                    <span id="second-last-call" class="light-blue-text" style="font-size:6rem;font-weight: bold;"></span>
+                                                </div>
+                                            
+                                            </div>
+                                            <div class="col s12  center-align red-text">
+                                                <div class=" center-align">
+                                                    <i class="medium material-icons ">arrow_downward</i>
+                                                </div>     
+                                            </div>
+                                            <div class="col s12 white center-align" style="height: 90px;border-style: solid;border-width: 1px;">
+                                                <div style="margin-top: -24px;">
+                                                    <span id="third-last-call" class="light-blue-text" style="font-size:6rem;font-weight: bold;"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
 
                                 </div>
@@ -600,10 +887,6 @@
                         <a id="exitInitiate-game-btn"  href="#modal10"
                             class="modal-trigger waves-effect waves-green btn-small red darken-4">Exit</a>
                     </div>
-
-
-
-
                 </div>
                 <div class="col s4 bottom-margin ">
                     <h5 class="grey-text text-darken-4">
@@ -617,11 +900,13 @@
                         <div id="game-winner-list-display" style="margin-left: 10px !important;">
                             <br/> 
                         </div>
-                    </div>
-                    
+                    </div>                    
                 </div>
+
+
             </div>
             <br />
+        -->
         </div>
 
     </div>
@@ -640,20 +925,21 @@
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
         <div class="modal-footer brown lighten-4">
             <a id="verify-ticket-button" href="javascript:Void(0);"
                 class="waves-effect waves-green btn-small black">OK</a>
-            <a id="verify-ticket-cancel-button" href="javascript:Void(0);" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a id="verify-ticket-cancel-button" href="javascript:Void(0);"
+                class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
     </div>
 
 
-    
 
-  
+
+
 
     <!-- Verify Ticket prompt prompt -->
     <div id="modal5" class="modal brown lighten-4"
@@ -699,17 +985,17 @@
                         <div class="col s6">
                             <select id="select-game-modal-choose-game" class="browser-default "
                                 style="margin-top: 11px;">
-                                
+
                             </select>
                         </div>
                         <div class="col s6">
                             <div style="margin-top: 18px !important;">
                                 <h5>
-                                    <i class="material-icons">chevron_right</i>   
-                                    <b id="select-game-modal-choose-game-tkt-display" class="grey lighten-3 grey-text" 
-                                    style="border-style: solid;border-width: 1px;padding-left: 20px;padding-right: 20px;padding-top: 7px;padding-bottom: 7px;">
-                                     
-                                </b>
+                                    <i class="material-icons">chevron_right</i>
+                                    <b id="select-game-modal-choose-game-tkt-display" class="grey lighten-3 grey-text"
+                                        style="border-style: solid;border-width: 1px;padding-left: 20px;padding-right: 20px;padding-top: 7px;padding-bottom: 7px;">
+
+                                    </b>
                                 </h5>
                             </div>
                         </div>
@@ -732,7 +1018,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>                   
+                    </div>
 
                 </div>
                 <div class="col s5 brown lighten-5">
@@ -757,8 +1043,9 @@
                                 <tr>
                                     <td style="width: 120px;"> Booklet price:</td>
                                     <td style="width: 120px;">
-                                        <input id="per-booklet-price" type="text" class="validate browser-default calculateData"
-                                            placeholder="Price" style="width:100%">
+                                        <input id="per-booklet-price" type="text"
+                                            class="validate browser-default calculateData" placeholder="Price"
+                                            style="width:100%">
                                     </td>
                                 </tr>
                                 <tr>
@@ -802,39 +1089,42 @@
                                     </td>
                                     <td style="width: 40px;">
                                         <div class="inline">
-                                            <input id="game-call-speed" type="text" class="validate browser-default" value="5"
-                                                placeholder="Time"> secs
+                                            <input id="game-call-speed" type="text" class="validate browser-default"
+                                                value="5" placeholder="Time"> secs
                                         </div>
                                     </td>
                                 </tr>
-                                 
+
                             </table>
                         </div>
                     </div>
                     <div style="margin-top: -20px !important;">
-                    <div class="row">
-                        <div class="col s12">
-                            <p>
-                                <label>
-                                    <input class="game-call-type-selection" name="game-call-type" value="auto" type="radio" checked/>
-                                    <span class="radio-label">Auto</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input class="game-call-type-selection" name="game-call-type"  value="enterkey" type="radio"  />
-                                    <span class="radio-label">Auto-Manual, Press "ENTER-KEY" to continue</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input class="game-call-type-selection" name="game-call-type"  value="manualEnter" type="radio"  />
-                                    <span class="radio-label">Manual, Enter a number from keyboard</span>
-                                </label>
-                            </p>
+                        <div class="row">
+                            <div class="col s12">
+                                <p>
+                                    <label>
+                                        <input class="game-call-type-selection" name="game-call-type" value="auto"
+                                            type="radio" checked />
+                                        <span class="radio-label">Auto</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input class="game-call-type-selection" name="game-call-type" value="enterkey"
+                                            type="radio" />
+                                        <span class="radio-label">Auto-Manual, Press "ENTER-KEY" to continue</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input class="game-call-type-selection" name="game-call-type"
+                                            value="manualEnter" type="radio" />
+                                        <span class="radio-label">Manual, Enter a number from keyboard</span>
+                                    </label>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
 
             </div>
@@ -843,7 +1133,7 @@
 
         </div>
         <div class="modal-footer  brown lighten-4">
-             
+
             <a id="play-btn-from-select-game" href="#modal3"
                 class="waves-effect waves-green btn-small black modal-trigger">PLAY</a>
             <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
@@ -851,62 +1141,63 @@
     </div>
 
 
-      <!-- approve Users Modal prompt prompt -->
-      <div id="approveUsersModal" class="modal brown lighten-4"
-      style="width: 80%;border-style: solid;border-width: 4px;border-color: #eceff1;">
-      <div class="modal-content ">    
-        <span class="right modal-close"> <i class="material-icons">close</i></span>      
-          <div class="row">
-            <h5 class="left-align" style="margin-top: -10px !important;"><b>Users List</b></h5>
-           
-            <div class="divider"></div>
-        </div>
-        <div class="row" id="user-list-preloader">
-            <div class="progress">
-                <div class="indeterminate"></div>
-            </div>
-        </div>
+    <!-- approve Users Modal prompt prompt -->
+    <div id="approveUsersModal" class="modal brown lighten-4"
+        style="width: 80%;border-style: solid;border-width: 4px;border-color: #eceff1;">
+        <div class="modal-content ">
+            <span class="right modal-close"> <i class="material-icons">close</i></span>
+            <div class="row">
+                <h5 class="left-align" style="margin-top: -10px !important;"><b>Users List</b></h5>
 
-        <div class="row">
-            <div class="col s12">
-                <div class="right">
-                    <div class="input-field col s12">
-                        <input id="tableSearch" type="text" class="validate">
-                        <label for="tableSearch" class='black-text'>Search</label>
-                    </div>
-                    
-                     
+                <div class="divider"></div>
+            </div>
+            <div class="row" id="user-list-preloader">
+                <div class="progress">
+                    <div class="indeterminate"></div>
                 </div>
             </div>
-        </div>
 
-        <div style="height: 400px;">
             <div class="row">
                 <div class="col s12">
-                 <table id="userListTable" class="highlight responsive-table" style="border-style: solid;border-width: 1px;border-color:#424242;">
-                     <thead class="black white-text">
-                       <tr class="black white-text">
-                           <th style="width:60px;text-align: center;" class="black white-text">S.No</th>                           
-                           <th style="width:120px;" class="black white-text">Name</th>
-                           <th style="width:120px;" class="black white-text">EmailID</th>
-                           <th style="width:200px;" class="black white-text">ClubName</th>   
-                           <th style="width:100px;text-align: center;" class="black white-text">Address 1</th>                       
-                            
-                           <th style="width:120px;text-align: center;" class="black white-text">Status</th>
-                           
-                       </tr>
-                     </thead>            
-                     <tbody  style="border-style: solid;border-width: 1px;border-color:#424242;">
-                                             
-                     </tbody>
-                   </table>
+                    <div class="right">
+                        <div class="input-field col s12">
+                            <input id="tableSearch" type="text" class="validate">
+                            <label for="tableSearch" class='black-text'>Search</label>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
+
+            <div style="height: 400px;">
+                <div class="row">
+                    <div class="col s12">
+                        <table id="userListTable" class="highlight responsive-table"
+                            style="border-style: solid;border-width: 1px;border-color:#424242;">
+                            <thead class="black white-text">
+                                <tr class="black white-text">
+                                    <th style="width:60px;text-align: center;" class="black white-text">S.No</th>
+                                    <th style="width:120px;" class="black white-text">Name</th>
+                                    <th style="width:120px;" class="black white-text">EmailID</th>
+                                    <th style="width:200px;" class="black white-text">ClubName</th>
+                                    <th style="width:100px;text-align: center;" class="black white-text">Address 1</th>
+
+                                    <th style="width:120px;text-align: center;" class="black white-text">Status</th>
+
+                                </tr>
+                            </thead>
+                            <tbody style="border-style: solid;border-width: 1px;border-color:#424242;">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
-         
-      </div>
-      
-  </div>
+
+    </div>
 
 
     <!-- Confirm Exit prompt prompt -->
@@ -923,7 +1214,7 @@
             <a href="javascript:Void(0);" class="modal-close waves-effect waves-green btn-small black">NO</a>
         </div>
     </div>
-   
+
 
     <ul id="slide-out" class="sidenav sidenav-fixed scrollbar">
         <li>
@@ -931,8 +1222,10 @@
                 <div class="background indigo darken-4">
                 </div>
                 <a class="white-text" style="font-size: 2rem;"><span class="user-clubName" id=""></span></a>
-                <a href="javascript:void(0);"><span class="white-text name"><span id="dashboard-name-display"></span></a>
-                <a href="javascript:void(0);"><span class="white-text email"><span id="dashboard-email-display"></span></a>
+                <a href="javascript:void(0);"><span class="white-text name"><span
+                            id="dashboard-name-display"></span></a>
+                <a href="javascript:void(0);"><span class="white-text email"><span
+                            id="dashboard-email-display"></span></a>
                 <a id="log-out" href="javascript:void(0);"><span class="white-text email right-align">LOG OUT</span></a>
             </div>
         </li>
@@ -940,13 +1233,13 @@
             <ul class="collapsible">
                 <li id="admin-manage">
                     <div class="collapsible-header"><i class="material-icons"><span class="material-icons">
-                        manage_accounts
-                        </span></i>Manage</div>
+                                manage_accounts
+                            </span></i>Manage</div>
                     <div class="collapsible-body grey lighten-5">
                         <ul>
                             <li><a href="#approveUsersModal" class="modal-trigger"><i
                                         class="material-icons">chevron_right</i>Approve Users</a></li>
-                            
+
                         </ul>
                     </div>
                 </li>
@@ -976,9 +1269,10 @@
                     <div class="collapsible-header"><i class="material-icons">verified_user</i>Verify</div>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a id="bingo-ticket-verify" href="#modal5" class="modal-trigger"><i class="material-icons">chevron_right</i>Bingo
+                            <li><a id="bingo-ticket-verify" href="#modal5" class="modal-trigger"><i
+                                        class="material-icons">chevron_right</i>Bingo
                                     90 tickets</a></li>
-                            
+
                         </ul>
                     </div>
                 </li>
@@ -1031,9 +1325,9 @@
           </footer> -->
 
 
-          <script type="text/javascript" src="js/jquery.js"></script>
-          <script type="text/javascript" src="js/materialize.min.js"></script>
-          <script type="text/javascript" src="js/jumbobingo.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/jumbobingo.js"></script>
 </body>
 
 </html>
