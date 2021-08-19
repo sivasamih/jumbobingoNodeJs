@@ -5,24 +5,24 @@ $(document).ready(function () {
     var gameLiveNumberStack = [];
     var gameStartCalledNumbers = [];
     var userGamesList = [];
-    var boogieTicketsSelected=[];
-   
+    var boogieTicketsSelected = [];
+
 
     var chkAudio = true;
     var numberExhausted = false;
-    
+
     var isPaused = false;
     var autoCallsSet = true;  //true if auto & false if manual
-    var manualEnterKeyPress=false;
-    var manualInputNumberEnterKeyPress=false;
-    var startBtnClicked=false;
+    var manualEnterKeyPress = false;
+    var manualInputNumberEnterKeyPress = false;
+    var startBtnClicked = false;
 
-    
-    
+
+
     var initAPIs = {};
     var userGameMst = {};
-    var selectedGameForPlay={};
-   
+    var selectedGameForPlay = {};
+
     var setIntervalVal = "";
     var userID = "";
     var language = "en";
@@ -33,9 +33,9 @@ $(document).ready(function () {
     var Name = "";
     var Token = "";
     var ticketsInPlay = "";
-    var selectedGameID="";
-    var insideSelectedVerifyTicketVal="";
-    
+    var selectedGameID = "";
+    var insideSelectedVerifyTicketVal = "";
+
     var time = 5000;
 
     var soldFrom = 0;
@@ -47,20 +47,20 @@ $(document).ready(function () {
     var totalGain = 0;
     var promptDisableMsg = 0;
 
-  
+
 
     initiateAPI();
 
     function performAllFunctions() {
         chkIfUserLoggedIn();
-        initializeElements();        
+        initializeElements();
         initialHidden();
         getMasterColors();
         loadInitialblankTicketDesign();
         getAllLanguages();
         fillTicketInPlayNewSetupDropdown();
         getUsersList();
-        
+
     }
 
 
@@ -81,35 +81,35 @@ $(document).ready(function () {
     }
 
 
-    function chkIfUserLoggedIn(){
+    function chkIfUserLoggedIn() {
         JBuserID = getCookie("JBuserID");
         ClubName = getCookie("ClubName");
         EmailID = getCookie("EmailID");
         IsAdmin = getCookie("IsAdmin");
         Name = getCookie("Name");
         Token = getCookie("Token");
-        if(JBuserID==null || JBuserID==""){
-            
-        }else{
+        if (JBuserID == null || JBuserID == "") {
+
+        } else {
             getUserGameList();
             getNumberings();
             var html = "<div><div class='row'><div class='col'><h3>Hi <span class='red-text'><b>" + Name + "</b></span>!</h3> <a href='dashboard' style='font-size:1.4rem;'> <span class='black-text'>Go to</span> <u>Dashboard</u></a></div></div></div>";
-                $("#hide-when-logged-in").html(html);
-                try{
-                    document.getElementById("dashboard-name-display").innerText = Name;
-                    document.getElementById("dashboard-email-display").innerText = EmailID;
-                }catch(ex){}
-                
-                // document.getElementById("dashboard-club-name").innerText = ClubName;
-                $(".user-clubName").text(ClubName);
+            $("#hide-when-logged-in").html(html);
+            try {
+                document.getElementById("dashboard-name-display").innerText = Name;
+                document.getElementById("dashboard-email-display").innerText = EmailID;
+            } catch (ex) { }
 
-                console.log("IsAdmin > ", IsAdmin);
-                if (IsAdmin == "true" || IsAdmin == true) {
-                    $("#admin-manage").show();
-                } else {
-                    $("#admin-manage").hide();
-                }
-            
+            // document.getElementById("dashboard-club-name").innerText = ClubName;
+            $(".user-clubName").text(ClubName);
+
+            console.log("IsAdmin > ", IsAdmin);
+            if (IsAdmin == "true" || IsAdmin == true) {
+                $("#admin-manage").show();
+            } else {
+                $("#admin-manage").hide();
+            }
+
         }
     }
 
@@ -181,7 +181,7 @@ $(document).ready(function () {
 
             },
             error: function (parsedjson, textStatus, errorThrown) {
-              //  toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
+                //  toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
             }
         });
     }
@@ -324,12 +324,12 @@ $(document).ready(function () {
         $("#user-list-preloader").hide();
         $("#new-game-note").hide();
         $("#show-ticket-no").hide();
-        
+
         $("#edit_setup_btn_grp").hide();
         $("#edit-btn-action-loader").hide();
         $("#new-btn-action-loader").hide();
         $("#play-btn-from-select-game").attr("disabled", true);
-        if(manualEnterKeyPress==true || autoCallsSet==true){
+        if (manualEnterKeyPress == true || autoCallsSet == true) {
             $("#game-manual-enter-number-display").hide();
         }
         // $("#gameScreen-game-select").prop("disabled", true);
@@ -344,7 +344,7 @@ $(document).ready(function () {
                 .attr("selected", 'selected')
                 .text("Ticket In Play"));
         var url = (initAPIs.domain + initAPIs.GetAllTktTypes).toString();
-        
+
         $.ajax({
             type: 'POST',
             url: url,
@@ -452,11 +452,11 @@ $(document).ready(function () {
 
     function getOptionsNameForDisplay(color) {
         var colorName = "";
-        $.each(gameMasterColors, function (key, value) {            
+        $.each(gameMasterColors, function (key, value) {
             if (color.id == value["ColorID"]) {
-               colorName= value["Colors"];
-                
-            }              
+                colorName = value["Colors"];
+
+            }
         });
         return colorName;
     }
@@ -522,7 +522,7 @@ $(document).ready(function () {
                 $("#third-last-call").text(third);
             }
 
-            
+
 
         } catch (ex) { console.log("updateSelectedCallsList | e > ", e); }
 
@@ -607,12 +607,12 @@ $(document).ready(function () {
                 $("#verify-wait").hide();
             }
         }
-        if (location == "inSideGame") {            
+        if (location == "inSideGame") {
             console.log("inside");
             setEnteredTicketNo();
             disableAllGameBtns();
             showAdminBoogieOrWinnerPrompt();
-            
+
 
             var tr1 = "<tr>" +
                 "<td class='td-width F1' ></td>" +
@@ -665,7 +665,7 @@ $(document).ready(function () {
     }
 
 
-    function setEnteredTicketNo(){
+    function setEnteredTicketNo() {
         $(".current-verify-ticket-entered").text(insideSelectedVerifyTicketVal);
     }
 
@@ -718,13 +718,13 @@ $(document).ready(function () {
     function calculateOthers() {
         totalTicketsSold = parseInt(soldTo) - parseInt(soldFrom) + 1;
         // totalPrice = bookletPrice * totalTicketsSold;
-        let chk=isNaN(totalTicketsSold);
-        if(chk){
+        let chk = isNaN(totalTicketsSold);
+        if (chk) {
             $("#total-tickets-sold").val(0);
-        }else{
+        } else {
             $("#total-tickets-sold").val(totalTicketsSold);
         }
-        
+
     }
 
     function validateEmail(email) {
@@ -869,14 +869,14 @@ $(document).ready(function () {
     }
 
     function resetEditGameForm() {
-        $("#edit_setup_table tbody").empty();       
+        $("#edit_setup_table tbody").empty();
         // $("#new_save_btn").removeAttr('disabled');
         $("#edit-game-date").val("");
         $("#edit-game-selected-display-ticketNo").text("");
     }
 
     function getUserGameList() {
-        
+
         $('#edit-game-name-select').children().remove();
         $('#edit-game-name-select')
             .append($("<option></option>")
@@ -884,56 +884,56 @@ $(document).ready(function () {
                 .attr("disabled", "disabled")
                 .attr("selected", 'selected')
                 .text("Game Name"));
-                $('#select-game-modal-choose-game').children().remove();
-                $('#select-game-modal-choose-game')
-                    .append($("<option></option>")
-                        .attr("value", '')
-                        .attr("disabled", "disabled")
-                        .attr("selected", 'selected')
-                        .text("Select Game"));
+        $('#select-game-modal-choose-game').children().remove();
+        $('#select-game-modal-choose-game')
+            .append($("<option></option>")
+                .attr("value", '')
+                .attr("disabled", "disabled")
+                .attr("selected", 'selected')
+                .text("Select Game"));
 
 
-                var url = (initAPIs.domain + initAPIs.GetAllGames).toString();   
-               
-                userID = getCookie("JBuserID");
-                var D = {
-                    "UID": userID
-                }
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: D,
-                    success: function (json) {                        
-                        userGameMst=json;
-                        setUserGameList(userGameMst);
-                    },
-                    error: function (parsedjson, textStatus, errorThrown) {
-                        toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
-                    }
-                });
+        var url = (initAPIs.domain + initAPIs.GetAllGames).toString();
+
+        userID = getCookie("JBuserID");
+        var D = {
+            "UID": userID
+        }
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: D,
+            success: function (json) {
+                userGameMst = json;
+                setUserGameList(userGameMst);
+            },
+            error: function (parsedjson, textStatus, errorThrown) {
+                toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
+            }
+        });
 
     }
 
-    function setUserGameList(userGameMst){
-        
-       let AllGame=userGameMst.AllGame;
-       userGamesList=AllGame;
-       console.log("================================================");
-       console.log("setUserGameList > userGamesList : ",userGamesList);
-       console.log("================================================");
-       $.each(userGamesList, function (key, value) {       
-        $('#edit-game-name-select')
-        .append($("<option></option>")
-            .attr("value", value.TktID)           
-            .attr("role", value.TktType)
-            .attr("class", value.SetupID)
-            .text(value.GameName));
+    function setUserGameList(userGameMst) {
+
+        let AllGame = userGameMst.AllGame;
+        userGamesList = AllGame;
+        console.log("================================================");
+        console.log("setUserGameList > userGamesList : ", userGamesList);
+        console.log("================================================");
+        $.each(userGamesList, function (key, value) {
+            $('#edit-game-name-select')
+                .append($("<option></option>")
+                    .attr("value", value.TktID)
+                    .attr("role", value.TktType)
+                    .attr("class", value.SetupID)
+                    .text(value.GameName));
 
             $('#select-game-modal-choose-game').append($("<option></option>")
-            .attr("value", value.TktID)           
-            .attr("role", value.TktType)
-            .attr("class", value.SetupID)
-            .text(value.GameName));
+                .attr("value", value.TktID)
+                .attr("role", value.TktType)
+                .attr("class", value.SetupID)
+                .text(value.GameName));
 
         });
     }
@@ -1004,7 +1004,7 @@ $(document).ready(function () {
     });
 
     $("#exitInitiate-game-btn").click(function () {
-        $("#pause-game-btn").click();       
+        $("#pause-game-btn").click();
     });
 
     $("#numbering-modal-open").click(function () {
@@ -1079,7 +1079,7 @@ $(document).ready(function () {
 
     }
 
-    $("#game-setup-modal-trigger").click(function(){
+    $("#game-setup-modal-trigger").click(function () {
         $("#new_game_radio").click();
     });
 
@@ -1181,7 +1181,7 @@ $(document).ready(function () {
                 data: D,
                 success: function (json) {
                     setVerifiedTicket(json, "outside");
-                    
+
                 },
                 error: function (parsedjson, textStatus, errorThrown) {
                     toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
@@ -1192,169 +1192,169 @@ $(document).ready(function () {
 
     });
 
-    $("#verify-ticket-cancel-button").click(function(){
+    $("#verify-ticket-cancel-button").click(function () {
         enableAllGameBtnsExceptStart();
     });
 
-     function disableAllGameBtns(){
-           $("#start-game-btn").attr("disabled", true);   
-           $("#pause-game-btn").attr("disabled", true);
-           $("#game-modal-verify-btn").attr("disabled", false);
-           $("#game-modal-clear-btn").attr("disabled", true);
-           $("#exitInitiate-game-btn").attr("disabled", true);
-     }
+    function disableAllGameBtns() {
+        $("#start-game-btn").attr("disabled", true);
+        $("#pause-game-btn").attr("disabled", true);
+        $("#game-modal-verify-btn").attr("disabled", false);
+        $("#game-modal-clear-btn").attr("disabled", true);
+        $("#exitInitiate-game-btn").attr("disabled", true);
+    }
 
-     function enableAllGameBtnsExceptStart(){
-        $("#start-game-btn").attr("disabled", false);   
+    function enableAllGameBtnsExceptStart() {
+        $("#start-game-btn").attr("disabled", false);
         $("#pause-game-btn").attr("disabled", true);
         $("#game-modal-verify-btn").attr("disabled", false);
         $("#game-modal-clear-btn").attr("disabled", false);
         $("#exitInitiate-game-btn").attr("disabled", false);
     }
 
-    function showAdminBoogieOrWinnerPrompt(){
+    function showAdminBoogieOrWinnerPrompt() {
 
         console.log("================================================================");
-        console.log("showAdminBoogieOrWinnerPrompt > selectedGameID > ",selectedGameID);
+        console.log("showAdminBoogieOrWinnerPrompt > selectedGameID > ", selectedGameID);
         let AllGameDetails = userGameMst.AllGameDetails;
-        console.log("showAdminBoogieOrWinnerPrompt > AllGameDetails > ",AllGameDetails);
+        console.log("showAdminBoogieOrWinnerPrompt > AllGameDetails > ", AllGameDetails);
         console.log("================================================================");
-        var html="";
-        var divStart="<div class='white' style='margin-left:10px !important; margin-top:-10px !important;'>";
-        var divEnd="</div>";
-        var msgTxt="<p>Please confirm ticket number <b>"+insideSelectedVerifyTicketVal+"</b> is : </p>";
-        var oneLine="<p><label><input name='group1' type='radio' value='One Line'/><span class='black-text'>One Line</span></label></p>";
-        var twoLine="<p><label><input name='group1' type='radio' value='Two Line' /><span class='black-text'>Two Line</span></label></p>";
-        var fullHouse="<p><label><input name='group1' type='radio' value='Full House' /><span class='black-text'>Full House</span></label></p>";
-        var corner="<p><label><input name='group1' type='radio' value='Corner' /><span class='black-text'>Corner</span></label></p>";
-        var selectBooggie="<p><label><input name='group1' type='radio' value='Boogie' class='this-is-boogie-radio' /><span class='black-text'>Boogie</span></label></p>";
-        var btn="<div class='right' style='margin-top:-35px !important;'><a  id='game-check-ticket-ok-btn' class='btn-flat'>Confirm</a> <a id='game-check-ticket-cancel-btn' class='btn-flat'>CANCEL</a> </div>";
-        
-        $.each(AllGameDetails, function (key, value) {            
-            if(value.ID==selectedGameID){
-                if(value.IsOneLn==true){
-                    html=html+oneLine;
-                }
-                if(value.IsTwoLn==true){
-                    html=html+twoLine;
-                }
-                if(value.IsFH==true){
-                    html=html+fullHouse;
-                }
-                if(value.IsCorner==true){
-                    html=html+corner;
-                }
-            }
-          });
+        var html = "";
+        var divStart = "<div class='white' style='margin-left:10px !important; margin-top:-10px !important;'>";
+        var divEnd = "</div>";
+        var msgTxt = "<p>Please confirm ticket number <b>" + insideSelectedVerifyTicketVal + "</b> is : </p>";
+        var oneLine = "<p><label><input name='group1' type='radio' value='One Line'/><span class='black-text'>One Line</span></label></p>";
+        var twoLine = "<p><label><input name='group1' type='radio' value='Two Line' /><span class='black-text'>Two Line</span></label></p>";
+        var fullHouse = "<p><label><input name='group1' type='radio' value='Full House' /><span class='black-text'>Full House</span></label></p>";
+        var corner = "<p><label><input name='group1' type='radio' value='Corner' /><span class='black-text'>Corner</span></label></p>";
+        var selectBooggie = "<p><label><input name='group1' type='radio' value='Boogie' class='this-is-boogie-radio' /><span class='black-text'>Boogie</span></label></p>";
+        var btn = "<div class='right' style='margin-top:-35px !important;'><a  id='game-check-ticket-ok-btn' class='btn-flat'>Confirm</a> <a id='game-check-ticket-cancel-btn' class='btn-flat'>CANCEL</a> </div>";
 
-          html=divStart+msgTxt+html+selectBooggie+btn+divEnd;
-              
-          $("#game-winner-options-display").html(html);
-          $("#game-winner-options-display").show();
-          $("#game-winner-list-display").hide();
-          
-    }
-
-    $(document).on('click', '#game-check-ticket-ok-btn', function () {    
-       console.log("============================================================");
-       console.log("game-check-ticket-ok-btn > clicked");        
-       var winnerChkRadio=$('input[name=group1]:checked').val();
-        console.log("game-check-ticket-ok-btn  > winnerChkRadio > ",winnerChkRadio);
-        // if(winnerChkRadio=="Boogie"){}else{
-           
-            
-        // }
-        var obj={
-            "type":winnerChkRadio,
-            "ticket":insideSelectedVerifyTicketVal
-        };
-        boogieTicketsSelected.push(obj);
-        
-        displayWinnerList();
-        enableAllGameBtnsExceptStart();
-       console.log("============================================================");
-       $("#game-winner-list-display").show();
-       $("#game-winner-options-display").hide();
-    });
-
-    function displayWinnerList(){
-        var displayWinnerListHtml="";
-        var oneLine="";
-        var twoLine="";
-        var fullHouse="";
-        var corner="";
-        var booggie=""; 
-        
-        console.log("In displayWinnerList");
-        console.log("In boogieTicketsSelected.lenght > ",boogieTicketsSelected.length);
-        console.log("In boogieTicketsSelected > ",boogieTicketsSelected);
-        $.each(boogieTicketsSelected, function (key, value) { 
-            console.log(" value.type > ",value);
-            if(value.type=="One Line"){
-                oneLine=oneLine+value.ticket+",";
-            }
-            if(value.type=="Two Line"){
-                twoLine=twoLine+value.ticket+",";
-            }
-            if(value.type=="Full House"){
-                fullHouse=fullHouse+value.ticket+",";
-            }
-            if(value.type=="Corner"){
-                corner=corner+value.ticket+",";
-            }
-            if(value.type=="Boogie"){
-                booggie=booggie+value.ticket+",";
+        $.each(AllGameDetails, function (key, value) {
+            if (value.ID == selectedGameID) {
+                if (value.IsOneLn == true) {
+                    html = html + oneLine;
+                }
+                if (value.IsTwoLn == true) {
+                    html = html + twoLine;
+                }
+                if (value.IsFH == true) {
+                    html = html + fullHouse;
+                }
+                if (value.IsCorner == true) {
+                    html = html + corner;
+                }
             }
         });
 
-        console.log("In oneLine > ",oneLine);
-        console.log("In twoLine > ",twoLine);
-        console.log("In fullHouse > ",fullHouse);
-        console.log("In corner > ",corner);
-        console.log("In booggie > ",booggie);
+        html = divStart + msgTxt + html + selectBooggie + btn + divEnd;
 
-        if(oneLine==""){}else{
-            oneLine="<b>One Line winners : </b>"+oneLine+"<br/>";
-        }
-        if(twoLine==""){}else{
-            twoLine="<b>Two Line winners : </b>"+twoLine+"<br/>";
-        }
-        if(fullHouse==""){}else{
-            fullHouse="<b>Full House winners : </b>"+fullHouse+"<br/>";
-        }
-        if(corner==""){}else{
-            corner="<b>Corner winners : </b>"+corner+"<br/>";
-        }
-        if(booggie==""){}else{
-            booggie="<b>Boogie Tickets : </b>"+booggie+"<br/>";
-        }
-
-        displayWinnerListHtml=displayWinnerListHtml+oneLine+twoLine+fullHouse+corner+booggie;
-        console.log("In displayWinnerListHtml > ",displayWinnerListHtml);
-        $("#game-winner-list-display").html(displayWinnerListHtml);        
+        $("#game-winner-options-display").html(html);
+        $("#game-winner-options-display").show();
+        $("#game-winner-list-display").hide();
 
     }
 
-    $(document).on('click', '#game-check-ticket-cancel-btn', function () {    
+    $(document).on('click', '#game-check-ticket-ok-btn', function () {
+        console.log("============================================================");
+        console.log("game-check-ticket-ok-btn > clicked");
+        var winnerChkRadio = $('input[name=group1]:checked').val();
+        console.log("game-check-ticket-ok-btn  > winnerChkRadio > ", winnerChkRadio);
+        // if(winnerChkRadio=="Boogie"){}else{
+
+
+        // }
+        var obj = {
+            "type": winnerChkRadio,
+            "ticket": insideSelectedVerifyTicketVal
+        };
+        boogieTicketsSelected.push(obj);
+
+        displayWinnerList();
+        enableAllGameBtnsExceptStart();
+        console.log("============================================================");
+        $("#game-winner-list-display").show();
+        $("#game-winner-options-display").hide();
+    });
+
+    function displayWinnerList() {
+        var displayWinnerListHtml = "";
+        var oneLine = "";
+        var twoLine = "";
+        var fullHouse = "";
+        var corner = "";
+        var booggie = "";
+
+        console.log("In displayWinnerList");
+        console.log("In boogieTicketsSelected.lenght > ", boogieTicketsSelected.length);
+        console.log("In boogieTicketsSelected > ", boogieTicketsSelected);
+        $.each(boogieTicketsSelected, function (key, value) {
+            console.log(" value.type > ", value);
+            if (value.type == "One Line") {
+                oneLine = oneLine + value.ticket + ",";
+            }
+            if (value.type == "Two Line") {
+                twoLine = twoLine + value.ticket + ",";
+            }
+            if (value.type == "Full House") {
+                fullHouse = fullHouse + value.ticket + ",";
+            }
+            if (value.type == "Corner") {
+                corner = corner + value.ticket + ",";
+            }
+            if (value.type == "Boogie") {
+                booggie = booggie + value.ticket + ",";
+            }
+        });
+
+        console.log("In oneLine > ", oneLine);
+        console.log("In twoLine > ", twoLine);
+        console.log("In fullHouse > ", fullHouse);
+        console.log("In corner > ", corner);
+        console.log("In booggie > ", booggie);
+
+        if (oneLine == "") { } else {
+            oneLine = "<b>One Line winners : </b>" + oneLine + "<br/>";
+        }
+        if (twoLine == "") { } else {
+            twoLine = "<b>Two Line winners : </b>" + twoLine + "<br/>";
+        }
+        if (fullHouse == "") { } else {
+            fullHouse = "<b>Full House winners : </b>" + fullHouse + "<br/>";
+        }
+        if (corner == "") { } else {
+            corner = "<b>Corner winners : </b>" + corner + "<br/>";
+        }
+        if (booggie == "") { } else {
+            booggie = "<b>Boogie Tickets : </b>" + booggie + "<br/>";
+        }
+
+        displayWinnerListHtml = displayWinnerListHtml + oneLine + twoLine + fullHouse + corner + booggie;
+        console.log("In displayWinnerListHtml > ", displayWinnerListHtml);
+        $("#game-winner-list-display").html(displayWinnerListHtml);
+
+    }
+
+    $(document).on('click', '#game-check-ticket-cancel-btn', function () {
         console.log("game-check-ticket-cancel-btn > clicked");
         // enableAllGameBtnsExceptStart();
         // $("#game-winner-list-display").show();
         // $("#game-winner-options-display").hide();
         cancelBoogieTicketVerify();
-     });
+    });
 
-    
-     function cancelBoogieTicketVerify(){
+
+    function cancelBoogieTicketVerify() {
         enableAllGameBtnsExceptStart();
         $("#game-winner-list-display").show();
         $("#game-winner-options-display").hide();
-     }
+    }
 
 
     $("#verify-ticket-button").click(function () {
         $("#loading-div").show();
-        var ticket_val = $("#ticket_number").val();  
-        insideSelectedVerifyTicketVal=ticket_val;
+        var ticket_val = $("#ticket_number").val();
+        insideSelectedVerifyTicketVal = ticket_val;
         if (ticket_val == "") {
             toastMsg("<span class='red-text text-lighten-4'>Enter Ticket Number!</span>");
             $.get("/views/blank-tinket-design.html", function (data, status) {
@@ -1364,7 +1364,7 @@ $(document).ready(function () {
             });
         } else {
             $("#game-winner-list-display").hide();
-           $('.modal#modal4').modal('close');
+            $('.modal#modal4').modal('close');
             var url = (initAPIs.domain + initAPIs.GetTicketData).toString();
             var D = {
                 "ID": ticket_val
@@ -1375,7 +1375,7 @@ $(document).ready(function () {
                 data: D,
                 success: function (json) {
                     setVerifiedTicket(json, "inSideGame");
-                    
+
                 },
                 error: function (parsedjson, textStatus, errorThrown) {
                     toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
@@ -1660,30 +1660,30 @@ $(document).ready(function () {
 
     });
 
-   
 
-     $(document).on('change', '#gameScreen-game-select', function () {
-        console.log("===================================================");  
+
+    $(document).on('change', '#gameScreen-game-select', function () {
+        console.log("===================================================");
         console.log("Game change initiated");
         var val = $(this).children("option:selected").val();
         var id = $(this).children("option:selected").attr("role");
         var SetupID = $(this).children("option:selected").attr("class");
         var text = $(this).children("option:selected").text();
-        console.log("val : ",val);
-        console.log("id : ",id);
-        console.log("SetupID : ",SetupID);
-        console.log("text : ",text);
-        
-        selectedGameID=val;        
-        let Color="";
-        Color=getSelectedGameColor(selectedGameID);    
-        console.log("Color : ",Color);
+        console.log("val : ", val);
+        console.log("id : ", id);
+        console.log("SetupID : ", SetupID);
+        console.log("text : ", text);
+
+        selectedGameID = val;
+        let Color = "";
+        Color = getSelectedGameColor(selectedGameID);
+        console.log("Color : ", Color);
         $(".ScreengameColor").text(Color);
         clearGame();
-        console.log("===================================================");  
-      });
+        console.log("===================================================");
+    });
 
-      function clearGame(){
+    function clearGame() {
         $("#recent-call").text("");
         $("#second-last-call").text("");
         $("#third-last-call").text("");
@@ -1694,17 +1694,17 @@ $(document).ready(function () {
         loadInitialblankTicketDesign();
         cancelBoogieTicketVerify();
         setAllNumbersDisplay(numberings);
-        gameStartCalledNumbers=[];
-        boogieTicketsSelected=[];
-        insideSelectedVerifyTicketVal="";
+        gameStartCalledNumbers = [];
+        boogieTicketsSelected = [];
+        insideSelectedVerifyTicketVal = "";
         bingo.clearRandom();
-      }
+    }
 
-      $("#game-modal-clear-btn").click(function(){
+    $("#game-modal-clear-btn").click(function () {
         clearGame();
-      });
+    });
 
-    $("#select-game-modal-choose-game").on("change", function (e) {  
+    $("#select-game-modal-choose-game").on("change", function (e) {
         // $("#play-btn-from-select-game").attr("disabled", false);
         // console.log("select-game-modal-choose-game > ",e);
         var val = $(this).children("option:selected").val();
@@ -1718,16 +1718,16 @@ $(document).ready(function () {
         // console.log("SetupID > ",SetupID);
 
         $.each(userGamesList, function (key, value) {
-          if(value.SetupID==SetupID){
-            GameDate=value.GameDate;
-          }
-        });     
+            if (value.SetupID == SetupID) {
+                GameDate = value.GameDate;
+            }
+        });
         $("#select-game-modal-choose-game-tkt-display").text(id);
 
         //get table list of game details from mst
         displayGameDetailsInSelectGameModal(SetupID);
         setGameName(SetupID);
-         
+
     });
 
     //-------------------------------------------------
@@ -1753,8 +1753,8 @@ $(document).ready(function () {
             bingo.selectedNumbers.push(random);
             return random;
         },
-        clearRandom:function(){
-            bingo.selectedNumbers=[];
+        clearRandom: function () {
+            bingo.selectedNumbers = [];
         }
     };
 
@@ -1764,7 +1764,7 @@ $(document).ready(function () {
     });
 
     $("#pause-game-btn").click(function () {
-        startBtnClicked=false;
+        startBtnClicked = false;
         clearInterval(setIntervalVal);
         $(this).attr("disabled", true);
         toastMsg("<span class='red-text text-lighten-4'>Game Paused!</span>");
@@ -1776,7 +1776,7 @@ $(document).ready(function () {
     $("#start-game-btn").click(function () {
         $("#gameScreen-game-select").prop("disabled", true);
 
-        startBtnClicked=true;
+        startBtnClicked = true;
         M.Toast.dismissAll();
         $("#pause-game-btn").attr("disabled", false);
         isPaused = false;
@@ -1804,30 +1804,30 @@ $(document).ready(function () {
             }, time);
         } else {
 
-            if(manualEnterKeyPress==true){
+            if (manualEnterKeyPress == true) {
                 toastMsg("<span class='red-text text-lighten-4'>Press Enter to call Numbers!</span>");
             }
 
-         }
+        }
     });
 
-    $("#game-screen-user-input-number").on("change",function(e){
-        
-        if (startBtnClicked==true) {            
-            let number=$(this).val();
-            console.log("input number : ",number);
+    $("#game-screen-user-input-number").on("change", function (e) {
+
+        if (startBtnClicked == true) {
+            let number = $(this).val();
+            console.log("input number : ", number);
             if (gameStartCalledNumbers.length > 89) {
-                numberExhausted=true;
+                numberExhausted = true;
                 toastMsg("<span class='red-text text-lighten-4'>Numbers Exhausted!</span>");
                 $(this).val("");
             }
             if (numberExhausted == false) {
-                if(number>=1 && number <=90){
-                    let chk=chkIfNumberExist(number);
-                    if(chk==true){
+                if (number >= 1 && number <= 90) {
+                    let chk = chkIfNumberExist(number);
+                    if (chk == true) {
                         toastMsg("<span class='red-text text-lighten-4'>Number Already Entered!</span>");
                         $(this).val("");
-                    }else{
+                    } else {
                         gameStartCalledNumbers.push(number);
                         if (chkAudio == true) {
                             dictateNumber(number);
@@ -1838,22 +1838,22 @@ $(document).ready(function () {
                         validateCalledNumbers();
                         $(this).val("");
                     }
-                }else{
+                } else {
                     toastMsg("<span class='red-text text-lighten-4'>Please Enter Valid Number !</span>");
                     $(this).val("");
-                }          
-                
+                }
+
             }
-        }else{
+        } else {
             toastMsg("<span class='red-text text-lighten-4'>Click on Start to continue!</span>");
             $(this).val("");
-        }    
-        
+        }
+
     });
 
-    $(document).on("keyup",function(e){
-        if(manualEnterKeyPress==true){
-            if (startBtnClicked==true) {
+    $(document).on("keyup", function (e) {
+        if (manualEnterKeyPress == true) {
+            if (startBtnClicked == true) {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     if (isPaused == false) {
                         var random = bingo.generateNextRandom().toString();
@@ -1874,50 +1874,50 @@ $(document).ready(function () {
                         // promptDisableMsg++;
                     }
                 }
-            }else{
+            } else {
                 if (e.key === 'Enter' || e.keyCode === 13) {
                     toastMsg("<span class='red-text text-lighten-4'>Click Start to continue!</span>");
                 }
-                
+
             }
         }
-           
-        
+
+
     });
 
-    $(".game-call-type-selection").on("click",function(){       
-        let val=$(this).val();
-        if(val=="auto"){
-             autoCallsSet = true;   
-             manualEnterKeyPress=false;
-             manualInputNumberEnterKeyPress=false;
+    $(".game-call-type-selection").on("click", function () {
+        let val = $(this).val();
+        if (val == "auto") {
+            autoCallsSet = true;
+            manualEnterKeyPress = false;
+            manualInputNumberEnterKeyPress = false;
         }
-        if(val=="enterkey"){
-            autoCallsSet = false;   
-            manualEnterKeyPress=true;
-            manualInputNumberEnterKeyPress=false;
+        if (val == "enterkey") {
+            autoCallsSet = false;
+            manualEnterKeyPress = true;
+            manualInputNumberEnterKeyPress = false;
         }
-        if(val=="manualEnter"){
-            autoCallsSet = false;   
-            manualEnterKeyPress=false;
-            manualInputNumberEnterKeyPress=true;
+        if (val == "manualEnter") {
+            autoCallsSet = false;
+            manualEnterKeyPress = false;
+            manualInputNumberEnterKeyPress = true;
             $("#game-manual-enter-number-display").show();
         }
     });
 
-    function chkIfNumberExist(number){
+    function chkIfNumberExist(number) {
         console.log("==========================================");
-        console.log("chkIfNumberExist > number > ",number);
-        let isPresent=false;
+        console.log("chkIfNumberExist > number > ", number);
+        let isPresent = false;
         $.each(gameStartCalledNumbers, function (key, value) {
-            console.log("chkIfNumberExist > value > ",value);
-            if(value==number){
+            console.log("chkIfNumberExist > value > ", value);
+            if (value == number) {
                 console.log("chkIfNumberExist  Already Present");
-                isPresent=true;
+                isPresent = true;
             }
-          });
-          console.log("==========================================");
-          return isPresent;
+        });
+        console.log("==========================================");
+        return isPresent;
     }
 
     $("#tableSearch").on("keyup", function () {
@@ -1980,7 +1980,7 @@ $(document).ready(function () {
                 },
                 "processData": false,
             }
-      
+
             // $.ajax(settings).done(function (json) {
             //     console.log("json : ", json);
             //     if (json.IsSuccess == true || json.IsSuccess == "true") {
@@ -1994,8 +1994,8 @@ $(document).ready(function () {
             //     }
             // });
 
- 
-            $.ajax({                
+
+            $.ajax({
                 "async": true,
                 crossDomain: true,
                 type: 'POST',
@@ -2017,47 +2017,47 @@ $(document).ready(function () {
                 },
                 error: function (parsedjson, textStatus, errorThrown) {
                     toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
-                    
+
                     $("#new-btn-action-loader").hide();
                     $(this).attr("disabled", false);
 
                 }
             });
-             
+
 
         } else {
             toastMsg("<span class='red-text text-lighten-4'>Choose All Details properly!</span>");
         }
     });
 
-    $("#edit-game-name-select").on("change", function (e) {    
-           
-        console.log("userGamesList > ",userGamesList); 
+    $("#edit-game-name-select").on("change", function (e) {
+
+        console.log("userGamesList > ", userGamesList);
         var val = $(this).children("option:selected").val();
         var id = $(this).children("option:selected").attr("role");
         var SetupID = $(this).children("option:selected").attr("class");
-        var GameDate="";
-        console.log("val > ",val);
-        console.log("id > ",id);
-        console.log("SetupID > ",SetupID);
+        var GameDate = "";
+        console.log("val > ", val);
+        console.log("id > ", id);
+        console.log("SetupID > ", SetupID);
 
         $.each(userGamesList, function (key, value) {
-          if(value.SetupID==SetupID){
-            GameDate=value.GameDate;
-          }
+            if (value.SetupID == SetupID) {
+                GameDate = value.GameDate;
+            }
         });
 
-     
+
         $("#edit-game-selected-display-ticketNo").text(id);
         $("#edit-game-date").val(GameDate);
         $("#show-ticket-no").fadeIn();
         $("#edit_setup_btn_grp").fadeIn();
 
         getGameDetails(SetupID);
-   
+
     });
 
-    function getGameDetails(SetupID){
+    function getGameDetails(SetupID) {
         $("#edit_setup_table tbody").empty();
         $("#new_setup_table tbody").empty();
         console.log("=======================================================");
@@ -2073,11 +2073,11 @@ $(document).ready(function () {
         });
         console.log("gameDetailList > ", gameDetailList);
 
-        for( let i=0;i<gameDetailList.length;i++){
-            var OneLnPrice=gameDetailList[i].OneLnPrice;
-            var TwoLnPrice=gameDetailList[i].TwoLnPrice;
-            var FHPrice=gameDetailList[i].FHPrice;
-            var CornerPrice=gameDetailList[i].CornerPrice;
+        for (let i = 0; i < gameDetailList.length; i++) {
+            var OneLnPrice = gameDetailList[i].OneLnPrice;
+            var TwoLnPrice = gameDetailList[i].TwoLnPrice;
+            var FHPrice = gameDetailList[i].FHPrice;
+            var CornerPrice = gameDetailList[i].CornerPrice;
             var ID = gameDetailList[i].GameID;
             var GAME_NAME = gameDetailList[i].GameName;
             var C = {
@@ -2086,92 +2086,92 @@ $(document).ready(function () {
             };
             var options = getOptions(C);
 
-            var onlineTD="";
-            var twoLineTD="";
-            var fullHTD="";
-            var cornerTD="";
+            var onlineTD = "";
+            var twoLineTD = "";
+            var fullHTD = "";
+            var cornerTD = "";
 
-            var IsOneLn=false;
-            var IsTwoLn=false;
-            var IsFH=false;
-            var IsCorner=false;
+            var IsOneLn = false;
+            var IsTwoLn = false;
+            var IsFH = false;
+            var IsCorner = false;
 
-             IsOneLn=gameDetailList[i].IsOneLn;
-             IsTwoLn=gameDetailList[i].IsTwoLn;
-             IsFH=gameDetailList[i].IsFH;
-             IsCorner=gameDetailList[i].IsCorner;
+            IsOneLn = gameDetailList[i].IsOneLn;
+            IsTwoLn = gameDetailList[i].IsTwoLn;
+            IsFH = gameDetailList[i].IsFH;
+            IsCorner = gameDetailList[i].IsCorner;
 
-            if(IsOneLn==true){
-                onlineTD="<label><input id='oneLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='oneLine' checked/><span>&nbsp;</span></label><input id='oneLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+OneLnPrice+"' style='width:50%' name='oneLine_" + ID + "' >";
-            }else{
-                onlineTD="<label><input id='oneLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='oneLine'/><span>&nbsp;</span></label><input id='oneLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+OneLnPrice+"' style='width:50%' name='oneLine_" + ID + "' disabled>";
+            if (IsOneLn == true) {
+                onlineTD = "<label><input id='oneLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='oneLine' checked/><span>&nbsp;</span></label><input id='oneLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + OneLnPrice + "' style='width:50%' name='oneLine_" + ID + "' >";
+            } else {
+                onlineTD = "<label><input id='oneLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='oneLine'/><span>&nbsp;</span></label><input id='oneLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + OneLnPrice + "' style='width:50%' name='oneLine_" + ID + "' disabled>";
             }
-            if(IsTwoLn==true){
-                twoLineTD="<label><input id='twoLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='twoLine' checked/><span>&nbsp;</span></label><input id='twoLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+TwoLnPrice+"' style='width:50%' name='twoLine_" + ID + "' >";
-            }else{
-                twoLineTD="<label><input id='twoLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='twoLine'/><span>&nbsp;</span></label><input id='twoLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+TwoLnPrice+"' style='width:50%' name='twoLine_" + ID + "' disabled>";
+            if (IsTwoLn == true) {
+                twoLineTD = "<label><input id='twoLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='twoLine' checked/><span>&nbsp;</span></label><input id='twoLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + TwoLnPrice + "' style='width:50%' name='twoLine_" + ID + "' >";
+            } else {
+                twoLineTD = "<label><input id='twoLine_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='twoLine'/><span>&nbsp;</span></label><input id='twoLine_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + TwoLnPrice + "' style='width:50%' name='twoLine_" + ID + "' disabled>";
             }
-            if(IsFH==true){
-                fullHTD="<label><input id='fullHouse_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='fullHouse' checked/><span>&nbsp;</span></label><input id='fullHouse_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+FHPrice+"' style='width:50%' name='fullHouse_" + ID + "' >";
-            }else{
-                fullHTD="<label><input id='fullHouse_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='fullHouse'/><span>&nbsp;</span></label><input id='fullHouse_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+FHPrice+"' style='width:50%' name='fullHouse_" + ID + "' disabled>";
+            if (IsFH == true) {
+                fullHTD = "<label><input id='fullHouse_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='fullHouse' checked/><span>&nbsp;</span></label><input id='fullHouse_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + FHPrice + "' style='width:50%' name='fullHouse_" + ID + "' >";
+            } else {
+                fullHTD = "<label><input id='fullHouse_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='fullHouse'/><span>&nbsp;</span></label><input id='fullHouse_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + FHPrice + "' style='width:50%' name='fullHouse_" + ID + "' disabled>";
             }
-            if(IsCorner==true){
-                cornerTD="<label><input id='corner_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='corner' checked/><span>&nbsp;</span></label><input id='corner_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+CornerPrice+"' style='width:50%' name='corner_" + ID + "' >";
-            }else{
-                cornerTD="<label><input id='corner_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='corner'/><span>&nbsp;</span></label><input id='corner_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='"+CornerPrice+"' style='width:50%' name='corner_" + ID + "' disabled>";
+            if (IsCorner == true) {
+                cornerTD = "<label><input id='corner_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='corner' checked/><span>&nbsp;</span></label><input id='corner_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + CornerPrice + "' style='width:50%' name='corner_" + ID + "' >";
+            } else {
+                cornerTD = "<label><input id='corner_game_chk_" + i + "' type='checkbox' class='filled-in game_selection_chk' role='" + ID + "' name='corner'/><span>&nbsp;</span></label><input id='corner_game_price_" + i + "' type='text' class='browser-default  game_price_input' value='" + CornerPrice + "' style='width:50%' name='corner_" + ID + "' disabled>";
             }
-          
+
             var tr = "<tr>" +
-            "<td> <input id='game_id_" + i + "' role='" + ID + "' type='hidden' value='" + GAME_NAME + "'/> " + GAME_NAME + " </td>" +
-            "<td>" +
-            "<div class='input-field  col s12'><select id='game_color_" + i + "' class='browser-default game_color' role='" + ID + "' > " +
-            options
-            + " </select></div>"
-            + "</td>" +
-            "<td>" +
-            onlineTD
-            + "</td>" +
-            "<td>" +
-            twoLineTD
-            + "</td>" +
-            "<td>" +
-            fullHTD
-            + "</td>" +
-            "<td>" +
-            cornerTD
-            + "</td>" +
-            +"</tr>";
-         $("#edit_setup_table tbody").append(tr);
+                "<td> <input id='game_id_" + i + "' role='" + ID + "' type='hidden' value='" + GAME_NAME + "'/> " + GAME_NAME + " </td>" +
+                "<td>" +
+                "<div class='input-field  col s12'><select id='game_color_" + i + "' class='browser-default game_color' role='" + ID + "' > " +
+                options
+                + " </select></div>"
+                + "</td>" +
+                "<td>" +
+                onlineTD
+                + "</td>" +
+                "<td>" +
+                twoLineTD
+                + "</td>" +
+                "<td>" +
+                fullHTD
+                + "</td>" +
+                "<td>" +
+                cornerTD
+                + "</td>" +
+                +"</tr>";
+            $("#edit_setup_table tbody").append(tr);
 
         }
 
     }
 
-      
 
-    $("#edit_deactivate_btn").click(function(){
+
+    $("#edit_deactivate_btn").click(function () {
         $("#show-ticket-no").hide();
         $("#edit-btn-action-loader").show();
         var val = $("#edit-game-name-select").children("option:selected").val();
         var id = $("#edit-game-name-select").children("option:selected").attr("role");
         var Class = $("#edit-game-name-select").children("option:selected").attr("class");
-        
 
-        let D={
-            "SetupID":Class,
-            "IsActive":false
+
+        let D = {
+            "SetupID": Class,
+            "IsActive": false
         };
-        console.log("edit_deactivate_btn > D > ",D);
-        var url = (initAPIs.domain + initAPIs.ActiveGame).toString(); 
+        console.log("edit_deactivate_btn > D > ", D);
+        var url = (initAPIs.domain + initAPIs.ActiveGame).toString();
         $.ajax({
             type: 'POST',
             url: url,
             data: D,
             success: function (json) {
-                console.log("response > json > ",json);
+                console.log("response > json > ", json);
                 toastMsg("<span class='green-text'>Game Deactivated!</span>");
-                $("#edit_setup_btn_grp").hide(); 
+                $("#edit_setup_btn_grp").hide();
                 getUserGameList();
                 $("#edit-game-selected-display-ticketNo").text("");
                 $("#edit-btn-action-loader").hide();
@@ -2186,14 +2186,14 @@ $(document).ready(function () {
         });
     });
 
-    $("#edit_save_btn").click(function(){  
+    $("#edit_save_btn").click(function () {
         $("#edit-btn-action-loader").show();
         console.log("edit_save_btn clicked");
         let userID = getCookie("JBuserID");
         let gameDate = $("#edit-game-date").val();
         let gameName = $("#edit-game-name-select").children("option:selected").text();
         let GameSetupID = $("#edit-game-name-select").children("option:selected").attr("class");
-        let ticketInPlayVal = $("#edit-game-selected-display-ticketNo").text(); 
+        let ticketInPlayVal = $("#edit-game-selected-display-ticketNo").text();
         let ticketInPlayId = getTicketInPlayId(ticketInPlayVal);
         let newGameDetails = {
             "UID": userID,
@@ -2204,14 +2204,14 @@ $(document).ready(function () {
 
         let gameDetails = getEditGameSelectedData(GameSetupID);
 
-            let jsonData = {
-                "GameSetupID": GameSetupID,
-                "gameSetup": newGameDetails,
-                "gameSetupDetails": gameDetails
-            };
+        let jsonData = {
+            "GameSetupID": GameSetupID,
+            "gameSetup": newGameDetails,
+            "gameSetupDetails": gameDetails
+        };
 
-        console.log("========================================");        
-        console.log("Edit jsonData : ",jsonData);
+        console.log("========================================");
+        console.log("Edit jsonData : ", jsonData);
         console.log("========================================");
 
         var url = (initAPIs.domain + initAPIs.UpdateGameSetup).toString();
@@ -2235,7 +2235,7 @@ $(document).ready(function () {
             },
             error: function (parsedjson, textStatus, errorThrown) {
                 toastMsg("<span class='red-text text-lighten-4'>Network Error, Please Try Later!</span>");
-                
+
                 $("#edit-btn-action-loader").hide();
 
             }
@@ -2243,16 +2243,16 @@ $(document).ready(function () {
 
 
     });
-    
 
-    function getTicketInPlayId(ticketInPlayVal){
-        let ticketInPlayId=0;        
+
+    function getTicketInPlayId(ticketInPlayVal) {
+        let ticketInPlayId = 0;
         $.each(ticketsInPlay, function (key, value) {
             if (value.TktType == ticketInPlayVal) {
-                ticketInPlayId=value.TktID;
+                ticketInPlayId = value.TktID;
             }
         });
-       return ticketInPlayId;
+        return ticketInPlayId;
     }
 
     function getEditGameSelectedData(GameSetupID) {
@@ -2293,7 +2293,7 @@ $(document).ready(function () {
 
 
             var obj = {
-                "ID": getDetailID(GameSetupID,gameID),
+                "ID": getDetailID(GameSetupID, gameID),
                 "GameID": gameID,
                 "ColorID": ColorID,
                 "IsOneLn": oneLine_game_chk,
@@ -2314,172 +2314,172 @@ $(document).ready(function () {
     }
 
 
-    function getDetailID(SetupID,GameID){        
-        let ID=0;
-        let AllGameDetails=userGameMst.AllGameDetails;
-        console.log("AllGameDetails > ",AllGameDetails);
+    function getDetailID(SetupID, GameID) {
+        let ID = 0;
+        let AllGameDetails = userGameMst.AllGameDetails;
+        console.log("AllGameDetails > ", AllGameDetails);
         $.each(AllGameDetails, function (key, value) {
             // console.log("key > ",key);
-            console.log("SetupID > ",SetupID);           
-            console.log("value.SetupID > ",value.SetupID);
-            console.log("GameID > ",GameID);
-            console.log("value.GameID > ",value.GameID);
-            if (value.SetupID == SetupID && value.GameID==GameID) {
-                 ID=value.ID;                
+            console.log("SetupID > ", SetupID);
+            console.log("value.SetupID > ", value.SetupID);
+            console.log("GameID > ", GameID);
+            console.log("value.GameID > ", value.GameID);
+            if (value.SetupID == SetupID && value.GameID == GameID) {
+                ID = value.ID;
             }
         });
         return ID;
     }
 
- 
-    
+
+
     $(".calculateData").on("keyup", function (e) {
 
-         soldFrom=$("#sold-from").val();
-         soldTo=$("#sold-to").val();
-         totalTicketsSold= $("#total-tickets-sold").val();
-         bookletPrice=$("#per-booklet-price").val();  
-         let tktNo=$("#select-game-modal-choose-game-tkt-display").text();
-        
-        if(tktNo.trim()==""){
+        soldFrom = $("#sold-from").val();
+        soldTo = $("#sold-to").val();
+        totalTicketsSold = $("#total-tickets-sold").val();
+        bookletPrice = $("#per-booklet-price").val();
+        let tktNo = $("#select-game-modal-choose-game-tkt-display").text();
+
+        if (tktNo.trim() == "") {
             toastMsg("<span class='red-text text-lighten-4'>Please Select Game!</span>");
-        }else{
-            let noOfTickets=getNumberOfTickets(tktNo);            
-            let N1=0;
-            N1=parseFloat(totalTicketsSold)/parseFloat(noOfTickets);
-            totalRevenue=N1*parseFloat(bookletPrice);
-            totalRevenue=parseFloat(totalRevenue);
-            let roundOffRevenue=(Math.round(totalRevenue * 100) / 100).toFixed(2);
-            let chk=isNaN(roundOffRevenue);
-            console.log("--- > chk > ",chk);
-            if(chk){
+        } else {
+            let noOfTickets = getNumberOfTickets(tktNo);
+            let N1 = 0;
+            N1 = parseFloat(totalTicketsSold) / parseFloat(noOfTickets);
+            totalRevenue = N1 * parseFloat(bookletPrice);
+            totalRevenue = parseFloat(totalRevenue);
+            let roundOffRevenue = (Math.round(totalRevenue * 100) / 100).toFixed(2);
+            let chk = isNaN(roundOffRevenue);
+            console.log("--- > chk > ", chk);
+            if (chk) {
                 $("#total-revenue").val(0);
-            }else{
+            } else {
                 $("#total-revenue").val(roundOffRevenue);
-                
+
                 totalPrice = $("#total-price").val();
-                totalPrice=(Math.round(parseFloat(totalPrice) * 100) / 100).toFixed(2);
-                totalGain=parseFloat(roundOffRevenue)-parseFloat(totalPrice);
-                totalGain=(Math.round(parseFloat(totalGain) * 100) / 100).toFixed(2);
+                totalPrice = (Math.round(parseFloat(totalPrice) * 100) / 100).toFixed(2);
+                totalGain = parseFloat(roundOffRevenue) - parseFloat(totalPrice);
+                totalGain = (Math.round(parseFloat(totalGain) * 100) / 100).toFixed(2);
                 $("#total-gain").val(totalGain);
-            }           
-            
-        }        
+            }
+
+        }
     });
 
     $("#game-call-speed").on("keyup", function (e) {
-        time=$(this).val();
-        if(time==""){
-            time=5000;  
-        }else{
-            if(parseFloat(time)>0){
-                time=parseFloat(time)*1000;
-            }else{
-                time=5000;  
+        time = $(this).val();
+        if (time == "") {
+            time = 5000;
+        } else {
+            if (parseFloat(time) > 0) {
+                time = parseFloat(time) * 1000;
+            } else {
+                time = 5000;
             }
         }
     });
 
-    $(document).on('click', '.playSelectedGame', function (e) {    
-        
-        selectedGameID=$(this).attr("role");//to selected the game master ID
+    $(document).on('click', '.playSelectedGame', function (e) {
+
+        selectedGameID = $(this).attr("role");//to selected the game master ID
         $("#play-btn-from-select-game").attr("disabled", false);
-        $('#gameScreen-game-select option[value="'+selectedGameID+'"]').prop('selected', true);
+        $('#gameScreen-game-select option[value="' + selectedGameID + '"]').prop('selected', true);
     });
 
-     
-    $("#play-btn-from-select-game").click(function(){
-        console.log("Hi your have selectedGameID > ",selectedGameID);
-        let Color="";    
-        Color=getSelectedGameColor(selectedGameID);             
+
+    $("#play-btn-from-select-game").click(function () {
+        console.log("Hi your have selectedGameID > ", selectedGameID);
+        let Color = "";
+        Color = getSelectedGameColor(selectedGameID);
         $(".ScreengameColor").text(Color);
         // $.each(selectedGameForPlay, function (key, value) {
         //     if (value.ID == selectedGameID) {
         //         console.log("Play Clicked Now searching > value > ",value);   
-                
+
         //     }
         // });
     });
 
-    function getSelectedGameColor(selectedGameID){
-        console.log("getSelectedGameColor > selectedGameID > ",selectedGameID);
-        console.log("getSelectedGameColor > selectedGameForPlay > ",selectedGameForPlay);
-        let Color="";
+    function getSelectedGameColor(selectedGameID) {
+        console.log("getSelectedGameColor > selectedGameID > ", selectedGameID);
+        console.log("getSelectedGameColor > selectedGameForPlay > ", selectedGameForPlay);
+        let Color = "";
         $.each(selectedGameForPlay, function (key, value) {
-            console.log("value > ",value);
+            console.log("value > ", value);
             if (value.ID == selectedGameID) {
-                console.log("Play Clicked Now searching > value > ",value);   
-                Color=value.Color; 
+                console.log("Play Clicked Now searching > value > ", value);
+                Color = value.Color;
             }
         });
 
         return Color;
     }
 
-    function getNumberOfTickets(tktNo){
-        let noOfTickets=0;       
-          $.each(ticketsInPlay, function (key, value) {
-            if(value.TktType==tktNo){              
-                noOfTickets=value.NoOfTkts;
+    function getNumberOfTickets(tktNo) {
+        let noOfTickets = 0;
+        $.each(ticketsInPlay, function (key, value) {
+            if (value.TktType == tktNo) {
+                noOfTickets = value.NoOfTkts;
             }
-          });
-          return noOfTickets;
+        });
+        return noOfTickets;
     }
 
-     
-    function setGameName(SetupID){
+
+    function setGameName(SetupID) {
         $('#gameScreen-game-select').children().remove();
-       
-        
+
+
         let gameDetailList = [];
-        let AllGameDetails = userGameMst.AllGameDetails;        
+        let AllGameDetails = userGameMst.AllGameDetails;
         $.each(AllGameDetails, function (key, value) {
             if (value.SetupID == SetupID) {
-                console.log("setGameName > value > ",value);
+                console.log("setGameName > value > ", value);
                 gameDetailList.push(value);
             }
         });
-        selectedGameForPlay=gameDetailList;
+        selectedGameForPlay = gameDetailList;
         $.each(selectedGameForPlay, function (key, value) {
             $('#gameScreen-game-select')
-            .append($("<option></option>")
-                .attr("value", value.ID)
-                .attr("role", value.SetupID)
-                .attr("class", value.GameID)
-                // .attr("selected", '')
-                .text(value.GameName));
-          });
+                .append($("<option></option>")
+                    .attr("value", value.ID)
+                    .attr("role", value.SetupID)
+                    .attr("class", value.GameID)
+                    // .attr("selected", '')
+                    .text(value.GameName));
+        });
 
 
-         
-         
+
+
     }
 
-    function displayGameDetailsInSelectGameModal(SetupID){
-        let totalPrize=0;
+    function displayGameDetailsInSelectGameModal(SetupID) {
+        let totalPrize = 0;
         $("#select-game-forPlay-Game-detail-display tbody").empty();
         $("#edit_setup_table tbody").empty();
         $("#new_setup_table tbody").empty();
-        console.log("=======================================================");        
+        console.log("=======================================================");
         let gameDetailList = [];
-        let AllGameDetails = userGameMst.AllGameDetails;        
+        let AllGameDetails = userGameMst.AllGameDetails;
         $.each(AllGameDetails, function (key, value) {
-            if (value.SetupID == SetupID) {               
+            if (value.SetupID == SetupID) {
                 gameDetailList.push(value);
             }
         });
         console.log("gameDetailList > ", gameDetailList);
 
-        for( let i=0;i<gameDetailList.length;i++){
+        for (let i = 0; i < gameDetailList.length; i++) {
 
-            var OneLnPrice=gameDetailList[i].OneLnPrice;
-            var TwoLnPrice=gameDetailList[i].TwoLnPrice;
-            var FHPrice=gameDetailList[i].FHPrice;
-            var CornerPrice=gameDetailList[i].CornerPrice;
-            var mastergameDetailID=gameDetailList[i].ID;
+            var OneLnPrice = gameDetailList[i].OneLnPrice;
+            var TwoLnPrice = gameDetailList[i].TwoLnPrice;
+            var FHPrice = gameDetailList[i].FHPrice;
+            var CornerPrice = gameDetailList[i].CornerPrice;
+            var mastergameDetailID = gameDetailList[i].ID;
 
-            var eachRowPrice=parseFloat(OneLnPrice)+parseFloat(TwoLnPrice)+parseFloat(FHPrice)+parseFloat(CornerPrice);
-            
+            var eachRowPrice = parseFloat(OneLnPrice) + parseFloat(TwoLnPrice) + parseFloat(FHPrice) + parseFloat(CornerPrice);
+
             var ID = gameDetailList[i].GameID;
             var GAME_NAME = gameDetailList[i].GameName;
             var C = {
@@ -2488,61 +2488,61 @@ $(document).ready(function () {
             };
             var GameColor = getOptionsNameForDisplay(C);
 
-            var onlineTD="";
-            var twoLineTD="";
-            var fullHTD="";
-            var cornerTD="";
+            var onlineTD = "";
+            var twoLineTD = "";
+            var fullHTD = "";
+            var cornerTD = "";
 
-            var IsOneLn=false;
-            var IsTwoLn=false;
-            var IsFH=false;
-            var IsCorner=false;
+            var IsOneLn = false;
+            var IsTwoLn = false;
+            var IsFH = false;
+            var IsCorner = false;
 
-             IsOneLn=gameDetailList[i].IsOneLn;
-             IsTwoLn=gameDetailList[i].IsTwoLn;
-             IsFH=gameDetailList[i].IsFH;
-             IsCorner=gameDetailList[i].IsCorner;
+            IsOneLn = gameDetailList[i].IsOneLn;
+            IsTwoLn = gameDetailList[i].IsTwoLn;
+            IsFH = gameDetailList[i].IsFH;
+            IsCorner = gameDetailList[i].IsCorner;
 
-             onlineTD=OneLnPrice;
-             twoLineTD=TwoLnPrice;
-             fullHTD=FHPrice;
-             cornerTD=CornerPrice;
+            onlineTD = OneLnPrice;
+            twoLineTD = TwoLnPrice;
+            fullHTD = FHPrice;
+            cornerTD = CornerPrice;
 
-             var radioBtn="<p><label><input name='select-toPlay-game' role='"+mastergameDetailID+"' class='playSelectedGame' type='radio' /><span class='radio-label'>&nbsp;</span></label></p>";
-          
+            var radioBtn = "<p><label><input name='select-toPlay-game' role='" + mastergameDetailID + "' class='playSelectedGame' type='radio' /><span class='radio-label'>&nbsp;</span></label></p>";
+
             var tr = "<tr>" +
-            "<td> <input id='game_id_" + i + "' role='" + ID + "' type='hidden' value='" + GAME_NAME + "'/> " + GAME_NAME + " </td>" +
-            "<td>" +
-            GameColor
-            + "</td>" +
-            "<td>" +
-            onlineTD
-            + "</td>" +
-            "<td>" +
-            twoLineTD
-            + "</td>" +
-            "<td>" +
-            fullHTD
-            + "</td>" +
-            "<td>" +
-            cornerTD 
-            + "</td>" +
-            "<td>"+radioBtn+"</td>"
-            +"</tr>";
-         $("#select-game-forPlay-Game-detail-display tbody").append(tr);
-         totalPrize=parseFloat(totalPrize)+parseFloat(eachRowPrice);
+                "<td> <input id='game_id_" + i + "' role='" + ID + "' type='hidden' value='" + GAME_NAME + "'/> " + GAME_NAME + " </td>" +
+                "<td>" +
+                GameColor
+                + "</td>" +
+                "<td>" +
+                onlineTD
+                + "</td>" +
+                "<td>" +
+                twoLineTD
+                + "</td>" +
+                "<td>" +
+                fullHTD
+                + "</td>" +
+                "<td>" +
+                cornerTD
+                + "</td>" +
+                "<td>" + radioBtn + "</td>"
+                + "</tr>";
+            $("#select-game-forPlay-Game-detail-display tbody").append(tr);
+            totalPrize = parseFloat(totalPrize) + parseFloat(eachRowPrice);
         }
         displayTotalPrize(totalPrize);
     }
 
-    function  displayTotalPrize(totalPrize){
-        let roundOfftotalPrize=(Math.round(totalPrize * 100) / 100).toFixed(2);
-        totalPrice=roundOfftotalPrize;
-          $("#total-price").val(roundOfftotalPrize);
+    function displayTotalPrize(totalPrize) {
+        let roundOfftotalPrize = (Math.round(totalPrize * 100) / 100).toFixed(2);
+        totalPrice = roundOfftotalPrize;
+        $("#total-price").val(roundOfftotalPrize);
     }
 
-    
-  
+
+
 
 
     //---------------------------------------------
