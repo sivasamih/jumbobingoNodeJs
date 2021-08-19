@@ -294,7 +294,7 @@ $(document).ready(function () {
         var c = 1;
         $.each(numberings, function (key, value) {
             var n = "";
-            n = "<div class='col s1'><a id='call_number_" + value.ID + "' class='btn-floating btn-small teal darken-1 round-btn-numberings all-number-initial-pointer'>" + value.ID + "</a></div>";
+            n = "<div class='col s1'><a id='call_number_" + value.ID + "' class='btn-floating btn-small teal lighten-2 round-btn-numberings all-number-initial-pointer'>" + value.ID + "</a></div>";
             numbersHTML = numbersHTML + n;
         });
         $(".all-numbers-display").html(numbersHTML);
@@ -486,7 +486,7 @@ $(document).ready(function () {
     }
 
     function highlightNumberInSeriesDisplay(random) {
-        $("#call_number_" + random).removeClass("teal darken-1");
+        $("#call_number_" + random).removeClass("teal lighten-2");
         $("#call_number_" + random).addClass("red");
     }
 
@@ -1078,6 +1078,10 @@ $(document).ready(function () {
 
 
     }
+
+    $("#game-setup-modal-trigger").click(function(){
+        $("#new_game_radio").click();
+    });
 
 
     $(".select_setup_type").click(function () {

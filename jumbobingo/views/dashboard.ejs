@@ -9,6 +9,27 @@
     <link type="text/css" rel="stylesheet" href="css/jumbobingo.css" media="screen,projection" />
 
     <style>
+
+        /* width */
+        ::-webkit-scrollbar {
+        width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+        background: #888; 
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+        }
+
         body {
             background-image: url("media/bg-02.png");
             background-color: #ffffff;
@@ -157,7 +178,7 @@
         }
 
         #modal6 {
-            height: 79%;
+            height: 85%;
             max-height: 100%;
             /* overflow: visible; */
             margin-top: -50px !important;
@@ -241,8 +262,8 @@
 
         .modal-css {
             border-style: solid;
-            border-width: 2px;
-            border-color: #b71c1c;
+            border-width: 1px;
+            /* border-color: #b71c1c; */
         }
 
         .margin-left-35 {
@@ -409,7 +430,7 @@
             </div>
             <div class="divider"></div>
             <div class="row grey lighten-4">
-                <div style="height: 350px; overflow-y: scroll;">
+                <div style="height: 350px; overflow-y: scroll; border-style: solid;border-width: 1px;">
                     <div id="numberings"></div>
                 </div>
 
@@ -422,7 +443,7 @@
         <div class="modal-footer  white">
 
             <a id="numberings-save-btn" href="javascript:void(0);"
-                class="waves-effect waves-green btn-small black">Save</a>
+                class="waves-effect waves-green btn-small indigo darken-4">Save</a>
             <a href="javascript:void(0);" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
@@ -439,7 +460,7 @@
             <div class="row">
                 <p>
                     <label>
-                        <input name="game_setup_selection" type="radio" class="select_setup_type" id="new_game_radio" />
+                        <input name="game_setup_selection" type="radio" class="select_setup_type" id="new_game_radio"/>
                         <span class="black-text">NEW SETUP</span>
                     </label>
                     <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -508,7 +529,7 @@
                                 <div class="row">
                                     <div class="col s12 right-align">
                                         <a id="new_save_btn" href="javascript:void(0);"
-                                            class="waves-effect waves-green btn-small black">Save</a>
+                                            class="waves-effect waves-green btn-small indigo darken-4">Save</a>
 
                                     </div>
                                 </div>
@@ -604,7 +625,7 @@
                                         <a id="edit_deactivate_btn" href="javascript:void(0);"
                                             class="waves-effect waves-green btn-small red">DEACTIVATE</a>
                                         <a id="edit_save_btn" href="javascript:void(0);"
-                                            class="waves-effect waves-green btn-small black">Save</a>
+                                            class="waves-effect waves-green btn-small indigo darken-4">Save</a>
 
                                     </div>
                                 </div>
@@ -629,9 +650,9 @@
     </div>
 
     <!-- Game Screen prompt -->
-    <div id="modal3" class="modal lime lighten-3"
+    <div id="modal3" class="modal lime "
         style="width: 90%; border-style: solid;border-width: 4px;border-color: #eceff1;">
-        <div class="modal-content lime lighten-3">
+        <div class="modal-content lime">
             
             <div class="right">
                 <div class="switch ">
@@ -644,8 +665,8 @@
                 </div>
             </div>
             <div style="margin-top: -24px !important;" class="center-align">
-                <h1 class="center-align light-blue-text text-darken-4 user-clubName game-h1-cN"></h1>
-                <h6 class="center-align light-blue-text text-darken-3 game-title-h6"
+                <h1 class="indigo-text text-darken-4 user-clubName game-h1-cN"></h1>
+                <h6 class="indigo-text text-darken-3 game-title-h6"
                     style="margin-top: -20px !important;"> <span class="black-text">Jumbo Bingo</span> : <span
                         class="ScreengameName red-text"></span> : <span class="ScreengameColor red-text"></span></h6>
             </div>
@@ -749,11 +770,11 @@
                         </div>
 
                         <div class="center" style="margin-top: 10px !important;">
-                            <a id="start-game-btn" class="btn-small black" style="margin-bottom: 2px !important;">Start</a>
-                                <a id="pause-game-btn" class="btn-small black" style="margin-bottom: 2px !important;">Pause</a>
-                                <a id="game-modal-verify-btn" href="#modal4" class="btn-small black modal-trigger"
+                            <a id="start-game-btn" class="btn-small indigo darken-4" style="margin-bottom: 2px !important;">Start</a>
+                                <a id="pause-game-btn" class="btn-small indigo darken-4" style="margin-bottom: 2px !important;">Pause</a>
+                                <a id="game-modal-verify-btn" href="#modal4" class="btn-small indigo darken-4 modal-trigger"
                                     style="margin-bottom: 2px !important;">Verify</a>
-                                <a id="game-modal-clear-btn" href="javascript:void(0);" class="btn-small black"
+                                <a id="game-modal-clear-btn" href="javascript:void(0);" class="btn-small indigo darken-4"
                                     style="margin-bottom:2px !important;">Clear</a>
                             <a id="exitInitiate-game-btn" href="#modal10"
                             class="modal-trigger waves-effect waves-green btn-small red darken-4"
@@ -912,7 +933,7 @@
     </div>
 
     <!-- Game Display Verify Ticket prompt prompt -->
-    <div id="modal4" class="modal brown lighten-4"
+    <div id="modal4" class="modal grey lighten-4"
         style="width: 25%;border-style: solid;border-width: 4px;border-color: #eceff1;">
         <div class="modal-content ">
             <div class="row">
@@ -928,9 +949,9 @@
 
 
         </div>
-        <div class="modal-footer brown lighten-4">
+        <div class="modal-footer grey lighten-4">
             <a id="verify-ticket-button" href="javascript:Void(0);"
-                class="waves-effect waves-green btn-small black">OK</a>
+                class="waves-effect waves-green btn-small indigo darken-4">OK</a>
             <a id="verify-ticket-cancel-button" href="javascript:Void(0);"
                 class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
@@ -942,7 +963,7 @@
 
 
     <!-- Verify Ticket prompt prompt -->
-    <div id="modal5" class="modal brown lighten-4"
+    <div id="modal5" class="modal grey lighten-4"
         style="width: 25%;border-style: solid;border-width: 4px;border-color: #eceff1;">
         <div class="modal-content ">
             <div class="row">
@@ -965,22 +986,22 @@
             </div>
 
         </div>
-        <div class="modal-footer  brown lighten-4">
-            <a id="verify-ticket-btn" href="javascript:Void(0);" class="waves-effect waves-green btn-small black">OK</a>
+        <div class="modal-footer  grey lighten-4">
+            <a id="verify-ticket-btn" href="javascript:Void(0);" class="waves-effect waves-green btn-small indigo darken-4">OK</a>
             <a href="javascript:Void(0);" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
     </div>
 
     <!-- Select Game prompt prompt -->
-    <div id="modal6" class="modal brown lighten-4"
-        style="width: 70%;border-style: solid;border-width: 4px;border-color: #eceff1;">
+    <div id="modal6" class="modal grey lighten-4"
+        style="width: 80%;border-style: solid;border-width: 4px;border-color: #eceff1;">
         <div class="modal-content ">
             <div class="row">
                 <h5 class="left-align" style="margin-top: -10px !important;"><b>Select Game </b></h5>
                 <div class="divider"></div>
             </div>
             <div class="row">
-                <div class="col s7">
+                <div class="col s12 l7 m7">
                     <div class="row">
                         <div class="col s6">
                             <select id="select-game-modal-choose-game" class="browser-default "
@@ -1021,7 +1042,7 @@
                     </div>
 
                 </div>
-                <div class="col s5 brown lighten-5">
+                <div class="col s12 l5 m5 brown lighten-5" style="border-style: solid; border-width: 1px;">
 
                     <div class="row">
                         <div class="col s12">
@@ -1132,17 +1153,17 @@
 
 
         </div>
-        <div class="modal-footer  brown lighten-4">
+        <div class="modal-footer grey lighten-4">
 
             <a id="play-btn-from-select-game" href="#modal3"
-                class="waves-effect waves-green btn-small black modal-trigger">PLAY</a>
+                class="waves-effect waves-green btn-small indigo darken-4 modal-trigger">PLAY</a>
             <a href="#" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
     </div>
 
 
     <!-- approve Users Modal prompt prompt -->
-    <div id="approveUsersModal" class="modal brown lighten-4"
+    <div id="approveUsersModal" class="modal grey lighten-4"
         style="width: 80%;border-style: solid;border-width: 4px;border-color: #eceff1;">
         <div class="modal-content ">
             <span class="right modal-close"> <i class="material-icons">close</i></span>
@@ -1175,16 +1196,14 @@
                     <div class="col s12">
                         <table id="userListTable" class="highlight responsive-table"
                             style="border-style: solid;border-width: 1px;border-color:#424242;">
-                            <thead class="black white-text">
-                                <tr class="black white-text">
-                                    <th style="width:60px;text-align: center;" class="black white-text">S.No</th>
-                                    <th style="width:120px;" class="black white-text">Name</th>
-                                    <th style="width:120px;" class="black white-text">EmailID</th>
-                                    <th style="width:200px;" class="black white-text">ClubName</th>
-                                    <th style="width:100px;text-align: center;" class="black white-text">Address 1</th>
-
-                                    <th style="width:120px;text-align: center;" class="black white-text">Status</th>
-
+                            <thead class="indigo darken-4 white-text">
+                                <tr class="indigo darken-4 white-text">
+                                    <th style="width:60px;text-align: center;" class="indigo darken-4 white-text">S.No</th>
+                                    <th style="width:120px;" class="indigo darken-4 white-text">Name</th>
+                                    <th style="width:120px;" class="indigo darken-4 white-text">EmailID</th>
+                                    <th style="width:200px;" class="indigo darken-4 white-text">ClubName</th>
+                                    <th style="width:100px;text-align: center;" class="indigo darken-4 white-text">Address 1</th>
+                                    <th style="width:120px;text-align: center;" class="indigo darken-4 white-text">Status</th>
                                 </tr>
                             </thead>
                             <tbody style="border-style: solid;border-width: 1px;border-color:#424242;">
@@ -1201,7 +1220,7 @@
 
 
     <!-- Confirm Exit prompt prompt -->
-    <div id="modal10" class="modal brown lighten-4"
+    <div id="modal10" class="modal grey lighten-4"
         style="width: 25%;border-style: solid;border-width: 4px;border-color: #eceff1;">
         <div class="modal-content ">
             <div class="conatiner">
@@ -1209,9 +1228,9 @@
             </div>
 
         </div>
-        <div class="modal-footer  brown lighten-4">
+        <div class="modal-footer  grey lighten-4">
             <a id="exit-game-btn" href="javascript:Void(0);" class="waves-effect waves-green btn-small red">YES</a>
-            <a href="javascript:Void(0);" class="modal-close waves-effect waves-green btn-small black">NO</a>
+            <a href="javascript:Void(0);" class="modal-close waves-effect waves-green btn-small indigo darken-4">NO</a>
         </div>
     </div>
 
@@ -1249,7 +1268,7 @@
                         <ul>
                             <li><a id="numbering-modal-open" href="#modal1" class="modal-trigger"><i
                                         class="material-icons">chevron_right</i>Numbering</a></li>
-                            <li><a href="#modal2" class="modal-trigger"><i class="material-icons">chevron_right</i>Game
+                            <li><a id="game-setup-modal-trigger" href="#modal2" class="modal-trigger"><i class="material-icons">chevron_right</i>Game
                                     setup</a></a></li>
                         </ul>
                     </div>
