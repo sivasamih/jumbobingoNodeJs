@@ -1978,6 +1978,7 @@ $(document).ready(function () {
                     "content-type": "application/json",
                     "cache-control": "no-cache",
                 },
+                
                 "processData": false,
             }
 
@@ -2002,7 +2003,11 @@ $(document).ready(function () {
                 url: url,
                 data: JSON.stringify(jsonData),
                 contentType: "application/json",
-                dataType: "json",
+                dataType: "jsonp",
+                // headers: {
+                //     "content-type": "application/json",
+                //     "cache-control": "no-cache",
+                // },
                 success: function (json) {
                     console.log("json : ", json);
                     if (json.IsSuccess == true || json.IsSuccess == "true") {

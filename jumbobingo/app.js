@@ -1,11 +1,23 @@
 const express =require('express')
-var cors = require('cors')
+// var cors = require('cors')
 const app=express()
 const port=3000
 
-app.use(cors())
+// app.use(cors({
+//     origin:"http://192.168.10.124:3000",
+//     methods:["GET","POST","PUT"]
+// }))
+
+ 
 
 app.use(express.static('assets'))
+
+// app.use(function(req,res,next){
+//     res.header("Access-Control-Allow-Origin","*");
+//     res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept");
+//     next();
+// })
+
  
 app.use(express.static('/css',express.static(__dirname+'assets/css')))
 app.use(express.static('/js',express.static(__dirname+'assets/js')))
@@ -27,4 +39,4 @@ app.get('/blankTicket',(req,res)=>{
     res.render('blank-tinket-design')
 })
 
-app.listen(port,()=>console.log('Listening port '))
+app.listen(port,()=>console.log('Listening port ',port))
